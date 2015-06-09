@@ -1,0 +1,185 @@
+<script type="text/javascript" src="__PUBLIC__/js/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/jquery-ui.css">
+<script type="text/javascript">
+$(function() {
+    var availableTags = [
+      "巴萨",
+      "曼联",
+      "曼城",
+      "切尔西",
+      "米兰",  
+      "阿森纳",
+      "阿贾克斯",
+      "足球鞋",
+      "短袖球衣",
+      "足球",
+      "美津浓",
+      "内马尔",
+      "C罗",
+      "梅西",
+      "碎丁足球鞋"
+    ];
+    $(".search_text" ).autocomplete({
+      source: availableTags
+    });
+ });
+	var addCartUrL = '{:U("Member/Cart/Add")}';
+	var delCartUrl = '{:U("Member/Cart/del")}';
+	var clearCartUrl = '{:U("Member/Cart/clearCart")}';
+	var updateUrl = '{:U("Member/Cart/updateGoodsNum")}';
+	var IncUrl = '{:U("Member/Cart/IncCartNum")}';
+	var DecUrl = '{:U("Member/Cart/DecCartNum")}';
+	var getTotalUrl = '{:U("Member/Cart/getTotalPrice")}';
+	var addOrderUrl = '{:U("Member/Order/addOrder")}';
+	var addCollectUrl = '{:U("Member/Collect/addCollect")}';
+	var delCollectUrl = '{:U("Member/Collect/delCollect")}';
+
+function countCart(){
+	var obj = $(".cart_inner li").html();
+	if (obj == undefined) {
+		alert('购物车中还没有商品');
+	}else{
+		window.location.href='{:U("Member/Cart/index")}';
+	}
+}
+/*搜索关键词*/
+function searchKeyword(){
+	var keyword = $(".search_text").val();
+	if (keyword == "") {
+		alert('请输入关键词');
+	}else{
+		window.location.href='{:U("Home/Filter/index")}?k='+keyword+'&page=1';
+	}
+}
+</script>
+<div class="headerBar">
+	<div class="topBar">
+		<div class="comWrap">
+			<div class="leftArea">
+				<a href="#" class="collection">收藏踢球者！</a>
+			</div>
+			<div class="rightNav">
+				<if condition="$userIsLogin">
+					<div>欢迎您：{$userName}</div>
+					<div><a href="{:U('Member/Order/account')}">[个人中心]</a></div>
+					<div><a href="{:U('Member/Login/logout')}">[注销]</a></div>
+					<else/>	
+						<!--登录注册-->
+						<div><a class='title' href="{:U('Member/Reg/index')}">[注册]</a></div>
+						<div><a class='title' href="{:U('Member/Login/index')}">[登录]</a></div>	
+				</if>	
+			</div>
+		</div>
+	</div>
+	<div class="logoBar">
+		<div class="comWrap">
+			<div class="logo fl">
+			</div>
+			<div class="search_box fl">
+				<input type="text" class="search_text fl" onkeydown="javascript:if(event.keyCode==13) searchKeyword();">
+				<input type="button" value="搜 索" class="search_btn fr" onclick="searchKeyword()">
+			</div>
+			<div class="shopCar fr">
+				<span class="shopText fl">购物车</span>
+				<span class="shopNum fr total_num">
+					<if condition="$total_num">{$total_num}
+						<else/>0
+					</if>
+				</span>
+				<div class="cart_inner">
+					<ul>
+						<if condition="$carts">
+							<foreach name="carts" item="val">					
+								<li gid={$val.gid}>
+									<a href="" class="pic">
+										<img src="__PUBLIC__/{$val.goods_img}">
+									</a>
+									<p class="tit">{$val.main_title}</p>
+									<div class="prop">
+										单价:
+										<em>￥{$val.price}</em>
+										数量：
+										<em class="gnum">{$val.goods_num}</em>
+									</div>
+									<a href="javascript:;" class="del" gid={$val.gid} onclick="delCart({$val.gid})"></a>
+								</li>
+							</foreach>
+							<else/>
+								<div class="no_carts">
+									购物车中还没有商品，去逛逛吧^_^
+								</div>
+						</if>			
+					</ul>
+					<div class="cart_funs">
+						<div class="total">
+							共有
+							<span class="total_num">
+								<if condition="$total_num">{$total_num}
+									<else/>0
+								</if>								
+							</span>
+							件商品
+							小计:￥
+							<span class="total_price">
+								<if condition="$total_price">{$total_price}
+									<else/>0
+								</if>
+							</span>
+						</div>
+						<div class="btns clear">
+							<a href="javascript:;" class="cart_btns clear_btn" onclick="clearCart()">清空购物车</a>
+							<a href="javascript:;" class="cart_btns count_btn" onclick="countCart()">立即结算</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="navBox">
+		<div class="comWrap clearfix">
+			<div class="shopClass fl">
+				<h3><a href="{:U("Home/index/index")}">全部商品分类</a><i class="shopClass_icon"></i></h3>
+				<div class="shopClass_show">
+					<dl class="shopClass_item">
+						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt>
+						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
+					</dl>
+					<dl class="shopClass_item">
+						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt>
+						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
+					</dl>
+					<dl class="shopClass_item">
+						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt>
+						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
+					</dl>
+					<dl class="shopClass_item">
+						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt>
+						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
+					</dl>
+					<dl class="shopClass_item">
+						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt>
+						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
+					</dl>
+				</div>
+				<div class="shopClass_list hide">
+					<div class="shopClass_cont">
+						<dl class="shopList_item">
+							<dt>电脑装机</dt>
+							<dd>
+								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a>
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+			<ul class="nav fl">
+				<li><a href="#" class="active">数码城</a></li>
+				<li><a href="#">天黑黑</a></li>
+				<li><a href="#">团购</a></li>
+				<li><a href="#">发现</a></li>
+				<li><a href="#">二手特卖</a></li>
+				<li><a href="#">名品会</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

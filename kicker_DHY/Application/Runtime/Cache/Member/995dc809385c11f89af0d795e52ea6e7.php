@@ -1,0 +1,125 @@
+<?php if (!defined('THINK_PATH')) exit();?>
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta property="qc:admins" content="4440264177665672516375" />
+<meta name="description" content="踢球者" />
+<meta name="keywords" content="踢球者" />
+<title>踢球者--登录</title>
+<link rel="stylesheet" type="text/css" href="/kicker/Public/style/login.css">
+<script type="text/javascript" src="/kicker/Public/js/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+var checkUrl = '<?php echo U("Member/Login/checklogin");?>';
+var verifyURL = '<?php echo U("Member/Login/verify");?>';
+function change_code(obj){
+	$("#code").attr("src",verifyURL+'?rnd='+Math.random());
+	return false;
+}
+$(function(){
+	$("#loginForm").submit(function(){
+		var username = $("#username").val();
+		var password = $("#password").val();
+		if (username == "" || password == "") {	
+			alert("用户名或者密码不能为空！");
+			return false;	
+		}
+		else{
+			return true;
+		}
+		// else{
+		// 	$.ajax({
+
+		// 		type : "POST",
+		// 		url : checkUrl,
+		// 		data : {username:username,password:password},
+		// 		success:function(res){
+		// 			alert("用户名或者密码不正确！");
+		// 		}
+
+		// 	})
+		// }
+	});
+})
+</script>
+
+
+</head>
+<body id="login">
+<!-- Topbar -->
+	<div class="topbar_wrap">
+				<div class="wrap topbar">
+			<ul>
+				<li><span>您好，请</span></li>
+				<li><a href="<?php echo U("Member/login/index");?>"><span>[登录]</span></a></li>
+				<li><a href="<?php echo U("Member/reg/index");?>" target="_blank"><span>[注册]</span></a></li>
+                				<li class="line"><span>|</span></li>
+				<li class="pull_link">
+					<span>客户服务<i class="arrow"></i></span>
+					<div class="pull_list">
+						<a href="#" target="_blank">常见问题</a>
+						<a href="#" target="_blank">售后服务</a>
+						<a href="#" target="_blank">投诉/建议</a>
+						<a href="#" target="_blank">联系客服</a>
+					</div>
+				</li>			
+			</ul>
+		</div>
+	</div>
+<div id="login_container" class="login_shell">
+		<div class="login_form clearfix">
+			<p><a class="backHome" href="<?php echo U("Home/index/index");?>" target="_blank"><i></i>返回首页</a></p>
+			<h2>欢迎登陆&nbsp;<a href="<?php echo U("Home/index/index");?>"><em>踢球者商城</em></a></h2>
+			<span class="weifeng_logo"></span>
+			<form name="loginForm" id="loginForm" method="post" action="<?php echo U("Member/login/checklogin");?>" >
+			<input type="hidden" id="needWekey" name="needWekey" value="0" />
+				<dl>
+					<dt>用户名</dt>
+					<dd><input name="username" type="text" size="40" id="username" autocomplete="off" onBlur="dispalyWekey();" value="" /> </dd>
+					<a href="http://passport.feng.com/?r=user/lostPwdRequest" target="_blank" class="lostpw" tabindex="-1">忘记密码？</a><dt>密码</dt>
+					<dd><input id="password" name="password" type="password"  size="40" autocomplete="off" /></dd>
+					<dd id="validateCodeTr" >
+            				<dl>
+							<dt>验证码</dt>
+							<dd><img id="code" src="<?php echo U('Member/Login/verify','','');?>" class="validateCode" onclick="change_code(this);" />
+                    		<input name="code" id="code" type="text" size="20" height="30" width="120" class="validateCode" autocomplete="off"/></dd>
+							</dl>
+            			</dd>
+						<dd id="wekeyTr" style="display:none">
+			            	<dl>
+			                <dt>WEKY</dt>
+			                <dd>
+			                	<input name="wekey" id="wekey" type="text" size="20" class="validateCode" autocomplete="off"/></dd>
+			                </dl>
+			            </dd>
+			            <dd class="error_info" id="error_info" style="display:none"></dd>
+					<dd class="login">
+						<button id="login_btn" class="login_btn" type="submit"><span>登 录</span></button>
+						<span id="logining_state" style="display:none" class="login_btn disabled"><img src="http://www.fengbuy.com/skin/frontend/fengbuy/default/images/s_loading.gif" width="16" height="16"/></span> 
+						<span id="remember_area"><input name="remember" type="checkbox" value="1" class="remember" id="remember" /> <label for="remember">两周内免登陆</label></span>
+					</dd>
+					<dd class="other_account">
+						<span>联合登陆：</span>
+						<a href="http://www.fengbuy.com/third/qq/login/" class="qq" title="使用QQ登录" target="_blank"><i></i>QQ登陆</a>
+						<!--
+						<a href="#" class="sina" title="使用新浪微博登录">新浪微博</a>
+						-->
+						<a href="http://www.fengbuy.com/third/alipay/login/" class="alipay" title="使用支付宝账号登录" target="_blank"><i></i>支付宝登陆</a>
+					</dd>
+					<dd class="tips">
+						<span id="remember_tips">为了账户安全，请勿在公用电脑上勾选此项。</span>
+					</dd>
+					<dd class="create_id">
+						<a href="<?php echo U("Member/reg/index");?>"><i></i>创建账户</a>
+					</dd>
+				</dl>
+			</form>
+			<div class="logion_ico"></div>
+		</div>
+		<span class="login_img"></span>
+</div>
+<div id="login_footer">
+<div class="top"><div class="wrap">欢迎访问踢球者商城</div></div>
+<div class="cp"><div class="wrap"><em class="fr"> <!-- <a href="#">关于我们</a>| --><a href="http://www.fengbuy.com/others?id=19" target="_blank">联系我们</a>|<!-- <a href="#">广告服务</a>| <a href="#">人才招聘</a>|--><a href="http://www.feng.com" target="_blank">踢球者社区</a>|<!-- <a href="#">商品评价</a>| --><a href="http://www.fengbuy.com/others?id=20" target="_blank">友情链接</a></em><strong>&copy; 2012 FENGBUY</strong>  备案编号：1101081681 粤ICP证070359号</div></div>
+</div></body>
+</html>

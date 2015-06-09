@@ -1,0 +1,106 @@
+/* global_topbar */
+.global_topbar_wrap{ height:40px; position:relative; z-index:101;}
+.global_topbar{ background:#FFF; border-bottom:1px solid #D6D6D6; box-shadow:0 1px 0 rgba(0,0,0,.02); color:#333; font:12px/1.5 "\5FAE\8F6F\96C5\9ED1",Arial,HELVETICA; height:39px; width:100%; position:absolute; left:0; z-index:9;}
+.global_topbar a{ color:#666; text-decoration:none;}
+.global_topbar a:hover{ color:#333;}
+.global_topbar a *{ cursor:pointer;}
+.global_topbar ul{ margin:0; padding:0; list-style:none;}
+.global_topbar .inner{ margin:0 auto; height:100%; width:980px; position:relative;}
+.global_topbar .services{ float:left; height:100%; width:130px; position:relative;}
+.global_topbar .services ul{ border:1px solid transparent; border-top:0; height:38px; width:100%; overflow:hidden; position:absolute; left:0; top:0; -webkit-transition:all ease .24s; -moz-transition:all ease .24s; -ms-transition:all ease .24s; transition:all ease .24s; _border-color:#FFF;}
+.global_topbar .services:hover ul{ border-color:#E8E8E8; box-shadow:0 0 1px rgba(0,0,0,.1); height:198px;}
+.global_topbar .services li{ background:#FFF; margin-bottom:-1px; vertical-align:top; *zoom:1;}
+.global_topbar .services li:hover{ background-color:#F0F0F0; position:relative;}
+.global_topbar .services .current, .global_topbar .services .current:hover{ background-color:transparent; margin-bottom:0;}
+.global_topbar .services li a{ display:block; border-top:1px solid #E8E8E8; font-size:16px; line-height:28px; padding:5px 0 7px; margin:0 10px;}
+.global_topbar .services li:hover a{ border-top-color:#F0F0F0;}
+.global_topbar .services .current a{ border-top:0; padding-bottom:6px;}
+.global_topbar .services i, .global_topbar .services .expand span,
+.global_topbar .tips, .global_topbar .num, .global_topbar .num em,
+.global_topbar .user_menu i, .global_topbar .link_target a{ background:url(../images/global_topbar.png) no-repeat;}
+.global_topbar .services i{ display:inline-block; background-position:0 -20px; margin:-3px 8px 0 0; height:26px; width:26px; vertical-align:middle; *margin-top:0;}
+.global_topbar .services .current i{ display:none;}
+.global_topbar .services .wegame{ background-position:-30px -20px;}
+.global_topbar .services .fengbuy{ background-position:-60px -20px;}
+.global_topbar .services .wper{ background-position:-90px -20px;}
+.global_topbar .services .weand{ background-position:-120px -20px;}
+.global_topbar .services .expand{ border-right:1px solid #E8E8E8; padding:0 10px; position:absolute; right:-2px; top:10px;}
+.global_topbar .services .expand span{ display:block; line-height:99px; height:20px; width:20px; overflow:hidden;}
+.global_topbar .links{ float:left; padding:0 30px 0 10px; overflow:hidden; position:relative;}
+.global_topbar .links li{ float:left; padding:6px 8px 0;}
+.global_topbar .links li a{ display:inline-block; padding:5px 1px; vertical-align:top;}
+.global_topbar .links .focus{ background:#059ef8; height:2px; width:26px; overflow:hidden; position:absolute; left:-80px; top:0; z-index:1; -webkit-transition:all cubic-bezier(.2,.2,.45,1.5) .44s; -moz-transition:all cubic-bezier(.2,.2,.45,1.5) .44s; -ms-transition:all cubic-bezier(.2,.2,.45,1.5) .44s; transition:all cubic-bezier(.2,.2,.45,1.5) .44s;}
+.global_topbar .tips, .global_topbar .num, .global_topbar .num em{ display:inline-block; background-position:100% 0; font-style:normal; padding-right:6px; vertical-align:top;}
+.global_topbar .tips, .global_topbar .num{ background-position:-120px 0; padding:0 0 0 6px; color:#FFF; font:12px/18px Arial; margin:-6px 0 0 -8px; position:absolute;}
+.global_topbar .tips em{ display:none;}
+.global_topbar .tips{ background-position:-80px 0; height:18px; width:26px; margin-left:2px; padding:0;}
+.global_topbar .user_menu{ float:right;}
+.global_topbar .user_menu li{ float:left; padding:10px 10px 0 5px;}
+.global_topbar .user_menu a{ color:#7C8A9C; font-weight:bold;}
+.global_topbar .user_menu i{ display:inline-block; background-position:-20px 0; margin-top:-2px; height:20px; width:20px; vertical-align:middle; *margin-top:0;}
+.global_topbar .user_menu .setting{ background-position:-40px 0;}
+.global_topbar .user_menu .logout{ background-position:-60px 0;}
+.global_topbar .user_menu .label, .global_topbar .link_target span{ display:none;}
+.global_topbar .user_menu .face{ padding:6px 2px 0 0;}
+.global_topbar .user_menu .face img{ border:0; border-radius:100%; box-shadow:0 0 1px rgba(0,0,0,.32); vertical-align:top; -ms-interpolation-mode:bicubic;}
+.global_topbar .link_target{ display:none; float:right; border-left:1px solid #E5E5E5; height:100%;}
+.global_topbar .link_target a{ display:inline-block; background-position:0 -50px; margin:9px 2px 0 10px; height:20px; width:52px;}
+
+/* sso_login_dialog */
+.sso_login_dialog{ background:#FFF; box-shadow:0 0 2px rgba(0,0,0,.1); margin:-120px 0 0 -240px; width:480px; position:fixed; left:50%; top:38.2%; z-index:999; _position:absolute;}
+.sso_login_dialog .sso_login_title{ background:#F6F6F6; background:-moz-linear-gradient(top, #F6F6F6 0%, #ECECEC 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#F6F6F6), color-stop(100%,#ECECEC)); background:-webkit-linear-gradient(top, #F6F6F6 0%,#ECECEC 100%); background:-o-linear-gradient(top, #F6F6F6 0%,#ECECEC 100%); background:-ms-linear-gradient(top, #F6F6F6 0%,#ECECEC 100%); background:linear-gradient(to bottom, #F6F6F6 0%,#ECECEC 100%); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#F6F6F6', endColorstr='#ECECEC',GradientType=0);
+ border-bottom:1px solid #CCC; cursor:default;}
+.sso_login_dialog .sso_login_title h3{ color:#333; font-size:16px; font-weight:bold; line-height:20px; padding:12px 40px 12px 24px;}
+.sso_login_dialog .sso_login_title h3 strong{ color:#06B5E9; margin-left:.3em;}
+.sso_login_dialog .sso_login_inner{ height:284px;}
+.sso_login_dialog .sso_login_close{ position:absolute; top:9px; right:20px;}
+.sso_login_dialog .sso_login_close a{ display:block; color:#999; font:18px/30px SimSun; height:30px; width:30px; overflow:hidden; text-align:center; text-decoration:none;}
+.sso_login_dialog .sso_login_close a:hover{ color:#333;}
+.sso_login_form, .sso_login_form input, .sso_login_form button{ font:12px/1.5 "\5FAE\8F6F\96C5\9ED1",Arial,HELVETICA;}
+.sso_login_form .hide{ display:none;}
+.sso_login_form{ color:#999; margin:0 24px; padding:20px 0; height:244px; max-width:480px; position:relative; zoom:1;}
+.sso_login_form .form_main{ float:right; border-left:1px solid #E1E1E1; padding-left:22px; height:100%; width:236px;}
+.sso_login_form .form_fields ul{ list-style:none; margin:0; padding:0;}
+.sso_login_form .form_fields li{ padding-bottom:10px; vertical-align:top; *padding-bottom:8px;}
+.sso_login_form .txt{ display:inline-block; position:relative; vertical-align:top;}
+.sso_login_form .txt label, .sso_login_form .txt .clear{ -webkit-transition:visibility linear .24s, opacity linear .24s; -moz-transition:visibility linear .24s, opacity linear .24s; -ms-transition:visibility linear .24s, opacity linear .24s; transition:visibility linear .24s, opacity linear .24s;}
+.sso_login_form .txt label{ color:#999; cursor:text; font-size:16px; margin:8px 0 0 11px; position:absolute; left:0; top:0; pointer-events:none;}
+.sso_login_form .txt.has_val label{ visibility:hidden; opacity:0;}
+.sso_login_form .txt input{ background:#FFF; border:1px solid #d0d0d0; border-radius:3px; color:#333; font-size:16px; padding:9px 34px 9px 10px; height:20px; width:190px; line-height:20px\9;}
+.sso_login_form .txt input:focus:focus{ border-color:#0096FF; box-shadow:0 0 3px rgba(0,150,255,.8); outline:0;}
+.sso_login_form .txt input:-webkit-autofill{ box-shadow:inset 0 0 0 60px #FFF; -webkit-text-fill-color:#333;}
+.sso_login_form .txt input:-webkit-autofill:focus{ box-shadow:0 0 3px rgba(0,150,255,.8), inset 0 0 0 60px #FFF;}
+.sso_login_form .txt input::-ms-clear, .sso_login_form .txt input::-ms-reveal{ display:none;}
+.sso_login_form .txt.error input{ border-color:#ED5565;}
+.sso_login_form .txt.error input:focus, .sso_login_form .txt.error input:-webkit-autofill:focus{ border-color:#ED5565; box-shadow:0 0 3px rgba(237,85,101,.8), inset 0 0 0 60px #FFF;}
+.sso_login_form .txt .clear{ background:url(../images/sso_login.png) no-repeat; line-height:99px; margin:9px 10px 0 0; height:22px; width:22px; overflow:hidden; position:absolute; right:0; top:0; opacity:0; visibility:hidden; outline:0;}
+.sso_login_form .txt .clear:hover{ background-position:-22px 0;}
+.sso_login_form .txt.has_val .clear{ visibility:visible; opacity:1;}
+.sso_login_form .txt_code input{ width:90px;}
+.sso_login_form .code_img{ display:inline-block; cursor:pointer; margin-left:8px; vertical-align:top;}
+.sso_login_form .code_img img, .sso_login_form .qr_main .pic img{ background:url(../images/loading.gif) no-repeat 50% 50%;}
+.sso_login_form .code_img img{ border:1px solid #C6E9FF; vertical-align:top;}
+.sso_login_form .error_note{ color:#ED5565;}
+.sso_login_form .btn{ display:inline-block; border-radius:3px; cursor:pointer; vertical-align:top;}
+.sso_login_form .btn button{ background:#0096FF; border:0; border-radius:3px; color:#FFF; cursor:pointer; font-size:16px; height:40px; width:236px;}
+.sso_login_form .btn:hover button{ background-color:#28A5FD;}
+.sso_login_form .btn button.disabled, .sso_login_form .btn button.disabled:hover{ background-color:#CCC; cursor:default;}
+.sso_login_form .btn i{ display:inline-block; background:url(../images/sso_login.png) no-repeat -44px 0; margin:-2px 0 0 .5em; height:20px; width:20px; vertical-align:middle; *margin-top:2px;}
+.sso_login_form .btn button.disabled i{ background:url(../images/loading.gif) no-repeat 50% 50%;}
+.sso_login_form .form_ext{ margin-bottom:22px; position:absolute; bottom:0;}
+.sso_login_form .form_ext a{ color:#999; margin-right:1.2em; text-decoration:none;}
+.sso_login_form .form_ext a:hover{ color:#333;}
+.sso_login_form .form_ext .reg, .sso_login_form .form_ext .reg:hover{ color:#06B5E9;}
+.sso_login_form .qr_main{ float:left; width:164px;}
+.sso_login_form .qr_main .pic, .sso_login_form .qr_main .pic img{ display:block;}
+.sso_login_form .qr_main .pic a, .sso_login_form .qr_main .mask{ color:#FFF; height:150px; width:150px; position:absolute; text-decoration:none;}
+.sso_login_form .qr_main .pic span{ display:block; padding:60px 30px 0; position:relative; text-align:center;}
+.sso_login_form .qr_main .mask{ background:#000; opacity:.5; filter:Alpha(opacity=50);}
+.sso_login_form .qr_main .info{ color:#999; padding:12px 0;}
+.sso_login_form .qr_main .info a{ border-bottom:1px dotted #AAA; color:#999; font-weight:bold; margin:0 .3em; text-decoration:none;}
+.sso_login_form .qr_main .info a:hover{ border-bottom-color:#333; color:#333;}
+.sso_login_mask, .sso_login_mask iframe{ margin:0; padding:0; height:100%; width:100%; left:0; top:0;}
+.sso_login_mask{ background:#000; position:fixed; z-index:998; opacity:.6; filter:Alpha(opacity=60); _position:absolute; _height:expression(documentElement.scrollHeight);}
+:root .sso_login_mask{ background:rgba(0,0,0,.6); opacity:1; filter:none;}
+.sso_login_mask iframe{ display:none; position:absolute; filter:Alpha(opacity=0); _display:block;}
+.sso_login_success_tips{ color:#333; font-size:16px; padding-top:60px; text-align:center;}

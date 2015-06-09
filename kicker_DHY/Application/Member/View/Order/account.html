@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人中心</title>
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/style/reset.css">
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/style/main.css">	
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/account.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/base2.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/cart.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/uploadify.css">
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/swfobject.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.uploadify.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+<script type="text/javascript">
+var uploadifyUrl = '{:U("Member/Index/uploadHeadImage")}';
+$(function(){
+
+	/*图片上传*/
+	$("#uploadify").uploadify({
+        'uploader': '/kicker/Public/js/uploadify.swf',
+        'script': uploadifyUrl,
+        'cancelImg': '/kicker/Public/js/cancel.png',
+        'folder': '/kicker/Public/uploads/headimages',
+        'queueID': 'fileQueue',
+        'fileTypeExts': '*.gif;*.jpg;*.png',
+        'auto': false,
+        'multi': false,
+        onComplete: function (event, ID, fileObj, response, data) {
+            // var ext = fileObj.filePath.substring(fileObj.filePath.lastIndexOf('.')).toLowerCase();
+            // var extname = ".jpg|.png|.gif";
+            // alert(ext);
+            if (response=='1') {
+            	alert('上传成功！');
+            	//alert(fileObj.filePath);
+            	var filePath = fileObj.filePath;
+            	$(".avatar img").attr('src',filePath);
+            }else{
+            	alert('文件类型不正确');
+            }
+            //alert(response);
+            return false;
+            // if (extname.search(ext) != -1) {
+            //     $("#originalImg").attr("src", fileObj.filePath);
+            //     $("#previewImg").attr("src", fileObj.filePath);
+            // } else {
+            //     alert("请上传[.jpg|.png|.gif]格式图片！");
+            // }
+        }
+    });
+});
+</script>
+</head>
+<body>
+<include file="./Public/tpl/header.html"/>
+<div id="container" class="clearfix wrap container">
+		<!--Main-->
+		<div id="personal_info" class="content">
+			<!-- Crumb -->
+			<div class="crumb">
+				<ul>
+					<li class="home"><a href="{:U('Home/Index/index')}"></a></li>
+					<li class="step_arrow"></li>
+					<li><a href="{:U('Member/Order/account')}">我的kicker商城</a></li>
+					<li class="step_arrow"></li>
+					<li>个人首页</li>
+				</ul>
+			</div>
+			
+			<div class="account-content">
+				<!--个人详细资料-->
+				<div class="account_cover clearfix">
+					<div class="avatar">
+					<img src="http://q.qlogo.cn/qqapp/100537426/805D716FC702D5C4A2BB774B4CD873E8/100"> 		
+					 <form id="form_upload">
+		                <input type="file" name="uploadify" id="uploadify" />
+		               	<a href="javascript:$('#uploadify').uploadifyUpload()" class="upload">上传头像</a>
+		              	<a href="javascript:$('#uploadify').uploadifyClearQueue()" class="upload"> 取消上传</a>
+		                <div id="fileQueue" style="height:70px; overflow:auto;"></div>
+		            </form>
+					</div>
+					<div class="welcome-msg">
+							<div class="hello">
+								<span>(上一次登录时间：2015-01-05 15:36:44)</span>
+								<strong>QQ用户梅小跳</strong>欢迎您回来！
+							</div>
+							<div id="leagure" class="leagure" style="width: 753px;">
+								<span class="name"><em><img src="http://www.fengbuy.com/media/customer/customerlevel/ce4fcb1f-f5d6-7274-bef7-cfc50d1414ed.png" height="20" width="20" alt="注册会员"></em>注册会员</span>
+								<p class="desc" style="width: 622px;"><span>累计消费金额0.00元，购买0次，继续消费1元或再购买1次，即可升为初级会员</span></p>
+								<span class="arrow_btn" title="收起"><i class="arrow"></i></span>
+							</div>
+							<!-- 查询余额 -->
+							<div class="ccye">
+								<div class="ccye_inner">
+									<div class="label"><a id="accountBalance" href="javaScript:;" class=""><span>查询余额</span><i></i></a></div>
+									<!--验证码-->
+									<div id="code_box" class="code_box" style="display: none;">
+										<p><span class="close"><a href="#" onclick="closeBox();">关闭</a></span></p>
+										<p class="show_balance">
+											<span>验证码</span>
+											<span class="money_input"><input id="validateCode" type="text" placeholder="" onkeydown="javascript:if(event.keyCode==13) EnterPress();"></span>
+											<a id="queryBalance" href="#" class="recharge_btn">查询</a>
+										</p>
+										<p class="alert">不区分大小写</p>
+										<p><a class="code_num" href="#"><img id="validateCodeImg" src="http://www.fengbuy.com/ucenter-client/index/validateCode/?0.08289262373000383" width="100" height="35"></a><a class="change_alink" href="javaScript:;" onclick="refreshValidateCode();">换一个</a></p>
+									</div>
+									
+									<!--充值跳转页面-->
+									<div id="balance_box" class="code_box" style="display: none;">
+										<p><span class="close"><a href="javaScript:;" onclick="closeBox();">关闭</a></span></p>
+										<p class="show_balance">
+											<span>账户余额：¥<em id="balance"></em>元</span>
+											</p><p><a href="http://pay.feng.com/index.php?r=site/login" class="balance_inquiries" target="_blank">余额充值</a></p>
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!--提醒/消费/合计-->
+						<div class="info">
+							<div id="info-wrap">
+								<table width="100%" cellspacing="0" cellpadding="0" border="0" id="info-table">
+									<tbody>
+										<tr>
+											<th>相关提醒</th>
+												<td>
+													<ul>
+														<li><a href="http://www.fengbuy.com/checkout/cart/">我的购物车<strong id="account_cartQty">（3）</strong>件</a></li>
+														<li><a href="http://www.fengbuy.com/account/order/myComments/">需要评价<strong id="account_evaluationQty">（0）</strong>件</a></li>
+														<li><a href="http://www.fengbuy.com/account/order/history/">三个月买入了<strong id="account_lastThreeMonthsQty">（0）</strong>件</a></li>
+														<li><a href="http://www.fengbuy.com/account/return/index/">退货<strong id="account_returnedQty">（0）</strong>件</a></li>
+														<li><a href="http://www.fengbuy.com/account/return/index/">换货<strong id="account_exchangeQty">（0）</strong>件</a></li>
+													</ul>
+												</td>
+										</tr>
+										<tr>
+											<th>优惠工具</th>
+												<td>
+													<ul>
+														<li><a href="http://www.fengbuy.com/account/integral/index/">现有积分<strong>0</strong>分</a></li>
+														<li><a href="http://www.fengbuy.com/account/giftCard/index/">优惠券<strong>0</strong>张</a></li>
+														<li><a href="http://www.fengbuy.com/account/cashCard/index/">现金卡<strong>0</strong>张</a></li>
+														<li><a href="#">We券<strong>0</strong>张</a></li>
+													</ul>
+												</td>
+										</tr>
+										<tr class="last">
+											<th>消费合计</th>
+												<td>
+													<ul>
+														<li>总消费 ¥ <strong>0.00</strong>元</li>
+														<li>退货合计 ¥ <strong>0</strong>元</li>
+<!--														<li>换货差额合计 &yen; <strong>0</strong>元</li>-->
+													</ul>
+												</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+				</div>
+					
+				<!--最近订单-->
+				<div class="my-account_content" id="mycomments_shell">
+				<div class="title_tab">
+					<span>订单详情</span>
+				</div>
+				<!--最近订单与订单评价-->
+                <div class="order_evaluation">
+				<div class="order_list">
+                  <div class="title">
+                    <h2>最近的订单</h2> 
+				  </div>					
+                  <table class="data-table" id="my-review-table">
+                    <thead>
+                      <tr class="first last">
+                        <th>订单号</th>
+                        <th>日期</th>
+                        <th>收货人</th>
+                        <th>订单金额</th>
+                        <th>状态</th>
+						<th>支付方式</th>
+						<th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="orderHistory">
+                    	<foreach name="his_orders" item="val" key="key">
+	                    	<tr><td><a href="{:U('Member/Order/viewOrder')}?order_id={$key}">{$val.billno}</a></td>	<td>{$val.add_time|date='Y-m-d H:i:s',###}</td>	<td>{$val.consignee}</td>	<td>¥{$val.total_price}</td>	<td>订单取消</td>	<td>在线支付</td>	<td class="last"><a href="{:U('Member/Order/viewOrder')}?order_id={$key}" class="btn_copera btn"><span>查看订单</span></a></td>
+		                    </tr>
+                    	</foreach>                 
+                    </tbody>
+                  </table>
+				</div>
+				  
+				  <div class="order_list">
+				  <div class="title">
+                    <h2>等待评价的订单</h2> 
+					</div>
+                  <table class="data-table" id="my-review-table">
+                    <thead>
+                      <tr class="first last">
+                        <th>订单号</th>
+                        <th>日期</th>
+                        <th>收货人</th>
+                        <th>订单金额</th>
+                        <th>状态</th>
+						<th>支付方式</th>
+						<th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="evaluationItemsList"><tr><td colspan="7" align="center">没有待评商品</td></tr></tbody>
+                  </table>
+				  </div>
+				  
+                </div>
+			</div>
+			</div>		
+		</div>
+<include file="./Public/tpl/siderBar.html"/>
+<div class="hr_25"></div>
+<include file="./Public/tpl/footer.html"/>
+</body>
+</html>

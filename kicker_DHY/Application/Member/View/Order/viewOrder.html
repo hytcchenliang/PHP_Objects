@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>查看单个订单</title>
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/style/reset.css">
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/style/main.css">	
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/account.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/base2.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/cart.css">
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+</head>
+<body>
+<include file="./Public/tpl/header.html"/>
+<div id="container" class="clearfix wrap container">
+	<!--Main-->
+ <div id="personal_info" class="content"> 
+	<div class="account-content address_manage">
+      <div class="title_bar">
+			<h2 id="orderView_order_no">订单号{$billno} - 等待付款</h2>
+						<a href="http://www.fengbuy.com/ucenter-client/index/pay/order_id/133291/key/d656abaeb9454c306bd1d6eb112e1c09" target="_blank" class="btn_n_pay btn btn_mt"><span>现在支付</span></a>
+			<span id="order_countdown" class="countdown" title="订单保留剩余时间"><i></i><em>剩余 58分11秒</em></span>
+						<span class="function_btn">
+			<a href="http://www.fengbuy.com/account/order/history/" class="btn_function btn" id="orderView_back"><span>返回</span></a>
+						<a href="#" class="btn_function btn" id="orderView_cancelOrder"><span>取消订单</span></a>
+									<a href="http://www.fengbuy.com/account/order/print/order_id/133291" target="_blank" class="btn_function btn"><span>打印订单</span></a>
+			</span>
+		</div>
+   
+        <div class="personal_account clearfix">
+		<div class="commodity_consult">
+		  	
+          <p class="explain" style="padding-left:72px">尊敬的客户，请您在60分钟内（自订单提交成功之时起算）完成付款，逾时系统将自动取消您的订单！</p>
+           
+          <!--步骤-->
+          										<div class="step_order">
+								<div class="inner">
+									<ol class="steps">
+										<li id="status1" class="first"><span class="done"><em>提交订单</em><i></i></span></li>
+										<li id="status2"><span class="wait"><em>等待客服处理</em><i></i></span></li>
+										<li id="status3"><span><em>商品出库</em><i></i></span></li>
+										<li id="status4"><span><em>配货发货</em><i></i></span></li>
+										<li id="status5" class="last"><span><em>完成</em><i></i></span></li>
+									</ol>
+								</div>
+							</div>
+											<!--货到付款步骤-->
+						<div class="tab_nav mt">
+							<ul>
+															<li><a href="#order_items" class="current">订购商品</a></li>
+																<li><a href="#order_info">订单信息</a></li>
+								<li><a href="#order_trace">订单跟踪</a></li>
+																<li><a href="#flow_info">物流跟踪</a></li>
+															</ul>
+						</div>
+						  		 			 <!-- 订单商品 -->
+					<div id="order_items" class="order-items">
+						<div class="order_title"><h3>订购商品
+												</h3></div>
+						<div class="info-list" id="mycomments_shell"> 
+						<!-- item list begin -->
+							<table class="data-table cart-table">
+								<thead>
+									<tr>
+										<th>商品图</th>
+										<th>商品信息</th>
+																				<th>价格</th>
+										<th>件数</th>
+										<th>小计</th>
+										<th>&nbsp;</th>
+									</tr>
+								</thead>
+								<tbody>
+									<foreach name='order_goods' item='val'>
+										<tr>
+											<td class="product_img">
+												<a href="{:U('Home/Detail/index')}?gid={$val.gid}"  target="_blank"><img src="__PUBLIC__/{$val.goods_img}" >
+												</a>
+											</td>
+											<td>
+												<h2 class="product-name">
+												<a href="{:U('Home/Detail/index')}?gid={$val.gid}" target="_blank">{$val.main_title}
+												</a></h2>
+												选择尺码:{$val.goods_attr}
+												<br>	
+											</td>
+											<td class="a-right"><span class="cart-price"> <span class="price">¥{$val.price}</span> </span>
+											</td>
+											<td class="a-center">{$val.goods_num}</td>
+											<td><span class="cart-price"> <span class="price">¥{$val.total_money}</span> </span></td>
+										</tr>
+									</foreach>						
+								</tbody>
+							</table>
+						<!-- item list end -->
+						<div class="step_total">
+						      
+							<table>
+								<tbody>
+									<tr>
+										<th>订单商品小计：</th>
+										<td><span id="summary_subtotal">¥{$total_price}</span>
+										</td>
+									</tr>
+							           				                     				                    				                    				                    				                    >
+										<th>运费：</th>
+										<td>+ <span id="summary_shipping_fee">¥0.00</span></td>
+									</tr>
+									<tr>
+										<td colspan="2" class="b">
+											实付金额：<strong class="summary_total">¥{$total_price}</strong>
+											<p><span class="other-info">价格已包含所有费用</span></p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+													 </div>
+						</div>
+					</div>
+				<!-- 订单信息 -->
+				<div id="order_info" class="my-account_content box-account order-details">
+					 <dl class="order-info">
+		             <dd>
+		              <ul id="order-info-tabs">
+		                <li class="current">订单信息</li>
+		              </ul>
+		            </dd>
+		          </dl>
+		          <!--<p class="order-date">订单日期：2011年12月15日</p> -->
+		          <div class="col2-set order-info-box clearfix">
+		            <div class="col-1">
+		              <div class="box">
+		                <h2>物流信息 </h2>
+		                <div class="box-content"> 快递公司：顺丰速运<br>
+					                  配送方式：顺丰速运<br>
+					                  快递单号：<!--  <span class="tracking"><a href="#">物流跟踪</a></span>--><br>
+					                  预计到达时间: 预计到达时间以快递官方公示为准；具体收货时间以实际当地派送为准<br>
+		                </div>
+		              </div>
+		            </div>
+		            <div class="col-2">
+		                <div class="box">
+			                <h2>配送地址</h2>
+			                <div class="box-content">
+			                    <address>
+						                  联系人：{$consignee}<br>
+						                  地址：{$address_str}<br>
+						                  邮政编码：{$postcode}<br>
+						                  固定电话：-<br>
+						                  移动电话：{$tel}	                  
+						        </address>
+			                </div>
+		                </div>
+		            </div>
+		          </div>
+		          <div class="col2-set order-info-box clearfix">
+		          	<div class="col-1">
+		              <div class="box">
+		                <h2>发票信息</h2>
+		                	                	<div class="box-content"> 没有开具发票  </div>
+	                			              </div>
+		            </div>
+		            <div class="col-2">
+		              <div class="box box-payment">
+		                <h2>支付信息</h2>
+		                <div class="box-content">
+		                  <div class="box-content">
+								<p>支付金额: ¥0.00</p>
+			                	<p>余额支付: ¥0.00 </p>
+						 </div>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          			</div>
+		  <!-- 订单跟踪 -->
+		  <div id="order_trace">
+			<div class="order_title"><h3>订单跟踪</h3></div>
+			<table class="order-data-table data-table">
+                <thead><tr><th width="368">处理时间</th><th>处理信息</th></tr></thead>
+                <tbody id="orderView_history"><tr>	<td>2014-12-31 14:20:59</td>	<td>提交订单成功</td></tr></tbody>
+              </table>
+		  </div>
+		  <!-- 物流跟踪 -->
+		  		  <div id="flow_info">
+			<div class="order_title"><h3>物流跟踪</h3></div>
+			<table class="order-data-table data-table" style="border-bottom-width:1px;">
+				<thead><tr><th colspan="2">物流信息</th></tr></thead>
+				<tbody>
+					<tr>
+						<td>快递公司：<em>顺丰速运</em></td>
+						<td>快递单号：<em></em></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="order-data-table data-table">
+				<thead><tr><th width="368">处理时间</th><th>处理信息</th></tr></thead>
+				<tbody id="logistics_history"><tr><td colspan="2"><div class="user_level_info_tips"><p><em style="color:red;font-size:14px;margin-right:.3em">*</em>很抱歉，物流公司未能返回有效的查询结果，可能是由于物流公司未能及时录入物流跟踪信息，请稍后再试。您可尝试通过物流公司官方查询页面进行查询，请点击这里【<a target="_blank" href="http://www.sf-express.com"><strong>顺丰速运</strong></a>】</p></div></td></tr></tbody>
+			  </table>
+		  </div>
+		  		  <!-- Bottom Links -->
+          <div class="buttons-set">
+            <p class="back-link"><a href="{:U('Member/Order/history')}"><small>« </small>返回我的订单</a></p>
+          </div>
+
+
+   </div> 
+   </div>
+  </div>
+  </div>
+<include file="./Public/tpl/siderBar.html"/>
+<div class="hr_25"></div>
+<include file="./Public/tpl/footer.html"/>
+</body>
+</html>

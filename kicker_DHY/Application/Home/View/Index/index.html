@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>首页</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/style/reset.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/style/main.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+<!--[if IE 6]>
+<script type="text/javascript" src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript" src="js/ie6Fixpng.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<include file="./Public/tpl/header.html"/>
+<div class="banner clearfix">
+	<div class="banner_bar banner_big">
+		<ul class="imgBox">
+			<li class="imgBoxLi img1" style="display:none;"><a href="#"></a></li>
+			<li class="imgBoxLi img2"><a href="#"></a></li>
+		</ul>
+		<div class="imgNum">
+			<a href="javascript:;" class="imgA" imgid = "1"></a>
+			<a href="javascript:;" class="imgA active" imgid="2"></a>
+		</div>
+		<a href="javascript:;" class="prev"></a>
+		<a href="javascript:;" class="next"></a>
+	</div>
+</div>
+<div class="shopArea">
+	<div class="shopTit comWidth">
+		<span class="icon"></span><h3>1F 球衣</h3>
+		<a href="{:U("Home/Filter/index")}?cid=1&page=1" class="more">更多&gt;&gt;</a>
+	</div>
+	<div class="shopList comWidth clearfix">
+		<div class="leftArea">
+			<div class="banner_bar banner_sm">
+				<ul class="imgBox">
+					<li><a href="#"><img src="__PUBLIC__/images/left1.png" alt="banner"></a></li>
+					<li><a href="#"><img src="__PUBLIC__/images/left1.png" alt="banner"></a></li>
+				</ul>
+				<div class="imgNum">
+					<a href="#" class="active">
+				</div>
+			</div>
+		</div>
+		<div class="rightArea">
+			<div class="shopList_top clearfix">
+				<foreach name="close_goods" item="good">
+					<div class="shop_item">
+						<div class="shop_img">
+							<a href="{:U("Home/Detail/index")}?gid={$good.gid}"><img src="__PUBLIC__/{$good.goods_img}" alt=""></a>
+						</div>
+						<div class="goods_info">
+							<h3>{$good.main_title}</h3>
+							<p>
+								<span style="margin-right:10px;">￥{$good.old_price}</span>
+								已售
+								<span>{$good.buy}</span>
+								件
+							</p>
+						</div>
+					</div>
+				</foreach>		
+			</div>
+		</div>
+	</div>
+</div>
+<div class="shopArea">
+	<div class="shopTit comWidth">
+		<span class="icon"></span><h3>2F 球鞋</h3>
+		<a href="{:U("Home/Filter/index")}?cid=3&page=1" class="more">更多&gt;&gt;</a>
+	</div>
+	<div class="shopList comWidth clearfix">
+		<div class="leftArea">
+			<div class="banner_bar banner_sm">
+				<ul class="imgBox">
+					<li><a href="#"><img src="__PUBLIC__/images/left3.png" alt="banner"></a></li>
+				</ul>
+				<div class="imgNum">
+					<a href="#" class="active">
+				</div>
+			</div>
+		</div>
+		<div class="rightArea">
+			<div class="shopList_top clearfix">
+				<foreach name="shoes_goods" item="good">
+					<div class="shop_item">
+						<div class="shop_img">
+							<a href="{:U("Home/Detail/index")}?gid={$good.gid}"><img src="__PUBLIC__/{$good.goods_img}" alt=""></a>
+						</div>
+						<div class="goods_info">
+							<h3>{$good.main_title}</h3>
+							<p>
+								<span style="margin-right:10px;">￥{$good.old_price}</span>
+								已售
+								<span>{$good.buy}</span>
+								件
+							</p>
+						</div>
+					</div>
+				</foreach>		
+			</div>
+		</div>
+	</div>
+</div>
+<div class="shopArea">
+	<div class="shopTit comWidth">
+		<span class="icon"></span><h3>3F 足球</h3>
+		<a href="{:U("Home/Filter/index")}?cid=4&page=1" class="more">更多&gt;&gt;</a>
+	</div>
+	<div class="shopList comWidth clearfix">
+		<div class="leftArea">
+			<div class="banner_bar banner_sm">
+				<ul class="imgBox">
+					<li><a href="#"><img src="__PUBLIC__/images/left4.png" alt="banner"></a></li>
+				</ul>
+				<div class="imgNum">
+					<a href="#" class="active">
+				</div>
+			</div>
+		</div>
+		<div class="rightArea">
+			<div class="shopList_top clearfix">
+				<foreach name="soccer_goods" item="good">
+					<div class="shop_item">
+						<div class="shop_img">
+							<a href="{:U("Home/Detail/index")}?gid={$good.gid}"><img src="__PUBLIC__/{$good.goods_img}" alt=""></a>
+						</div>
+						<div class="goods_info">
+							<h3>{$good.main_title}</h3>
+							<p>
+								<span style="margin-right:10px;">￥{$good.old_price}</span>
+								已售
+								<span>{$good.buy}</span>
+								件
+							</p>
+						</div>
+					</div>
+				</foreach>		
+			</div>
+		</div>
+	</div>
+</div>
+<div class="hr_25"></div>
+<include file="./Public/tpl/footer.html"/>
+</body>
+</html>
