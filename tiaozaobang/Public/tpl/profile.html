@@ -1,0 +1,42 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/user.css">
+<div class="main center">
+    <div class="top clearfix">
+        <div id="user_msg">
+            <div class="name">{$v_user.username}<img class="grade_prof" src="__PUBLIC__/css/images/ico_lv{$v_user_Level}.png" alt="等级"></div>
+            <p class="has_sell">已卖出<span>{$selled_Count}</span>件商品</p>
+            <ul class="seller_attr">
+                <eq name="v_user.grade" value="0">
+                    <li>该用户是神龙见首不见尾的游客用户</li>
+                    <else />
+                    <li>{$v_user_school}</li>
+                </eq>
+            </ul>
+        </div>
+        <div id="user_photo">
+            <img id="origin_ph" src="{$v_user.headimg}" alt="头像">
+        </div>
+    </div>
+    <ul id="middle_nav" class="clearfix">
+        <li class="on"><a href="javascript:;">正在出售的商品</a></li>
+    </ul>
+    <div id="my_products">
+        <div id="onsale_pro">
+            <foreach name="my_products" item="vo">
+                <eq name="vo.salestate" value="0">
+                    <div class="enshr_each">  
+                        <div class="enshr_info">
+                            <h2><a href="{:U('Home/goods/index')}/goodsid/{$vo.goodid}" title="{$vo.goodname}">{$vo.goodname}</a></h2>
+                            <p>{$vo.gooddes}</p>
+                            <div class="enshr_state"> 
+                                <span class="enshr_info_price">¥{$vo.price}</span>
+                                <span class="enshr_info_address">{$vo.place}</span>
+                            </div>
+                        </div>
+                        <a href="{:U('Home/goods/index')}/goodsid/{$vo.goodid}">
+                            <img class="enshr_ph" src="{$vo.goodimg1}" alt="{$vo.goodname}">
+                        </a>
+                    </div>
+                </eq>
+            </foreach>
+        </div>
+    </div>

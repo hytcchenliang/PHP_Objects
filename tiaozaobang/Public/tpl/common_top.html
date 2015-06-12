@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>跳蚤帮，学生闲置物品交易平台</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="Keywords" content="校内，大学生，学生，二手物品，网上跳蚤市场，闲置物品，二手货，交易">
+	<meta name="Description" content="跳蚤帮 校园里的一个真实的跳蚤市场，快来看看有没有你需要的，或是有自己想出手的，闲着也是闲着，说不定还能见到帅哥美女哦。">
+	<link rel="icon" href="__PUBLIC__/css/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script> 
+	<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+</head>
+<body>
+	<header class="ease2">
+	    <a href="/tiaozaobang">
+	        <img class="logo ease2" src="__PUBLIC__/css/images/logo.png">
+	    </a>
+	    <div class="header-main center ease2">
+	        <a href="/tiaozaobang" class="slogan">
+	            <h1 class="s-main"></h1>
+	            <div class="s-submain"></div>
+	            <img src="__PUBLIC__/css/images/slogan.png">
+	        </a>
+	        <div class="search-box-wr ease2">
+	            <form class="search-box center" action="{:U('Home/Index/search')}" method="get">
+	                <button type="submit" class="search-submit">搜索</button>
+	                <div class="input-wr">
+	                    <img class="search-icon" src="__PUBLIC__/css/images/search-icon.png">
+	                    <div class="search-input">
+	                    	<input name="keyword" id="keyword" x-webkit-speech="" type="text" placeholder="搜索你想要的二货">
+	                    </div>
+	                </div>
+	            </form>
+	            <div class="search-hots center ease2">
+	                <span>热门：</span>
+	                <a class="hots" href="{:U('Home/Index/category')}?id=2">自行车</a>
+	                <a class="hots" href="{:U('Home/Index/category')}?id=3">电动车</a>
+	                <a class="hots" href="{:U('Home/Index/category')}?id=6">笔记本</a>
+	                <a class="hots" href="{:U('Home/Index/category')}?id=40">教材</a>
+	            </div>
+	        </div>
+	        <div class="log-reg ease2">
+	        	<if condition="!empty($cur_User_id)">
+    				<div id="have_login" class="clearfix">
+		                <div id="person_info" class="clearfix">
+		                	<div id="userid" style="display:none">{$cur_User.userid}</div>
+		                    <img class="avatar" src="{$cur_User.headimg}" alt="头像">
+		                    <div class="person_name">{$cur_User.username}</div>
+		                    <a href="{:U('Home/User/level')}" class="grade" target="_blank"><img src="__PUBLIC__/css/images/ico_lv{$cur_User_Level}.png"></a>
+		                    <a class="person_message on" style="visibility: hidden;" href="{:U('Home/User/message')}">0</a>
+		                </div>
+		                <div id="user_fun">
+			                <img class="login_border" src="__PUBLIC__/css/images/login_border.png">
+			                <div class="login_slider">
+			                    <h3>嗨，<span>{$cur_User.username}</span></h3>
+			                    <ul>
+			                        <li><a href="{:U('Home/User/index')}">个人中心</a></li>
+			                        <li><a href="{:U('Home/User/favorites')}">我的收藏</a></li>
+			                        <li><a href="javascript:;" id="exit_login">退出登录</a></li>
+			                     </ul>
+			                </div>
+		                </div>
+		            </div>
+		            <else />
+			            <div id="no_login" style="display: block;">
+			            	<div class="button" data-type="l">登录</div>
+		            		<div class="button" data-type="r">注册</div>
+			            </div>
+			    </if>
+	        </div>
+	    </div>
+	</header>
+	<nav class="ease2 boxshadow">
+	    <ul>
+	        <li class="blank-head"><a href="javascript:;"></a></li>
+	        <li class="area">
+	            <div>
+	                <i class="nav-icons"></i>
+	                <div id="college"><span>淮阴师范学院</span></div>
+	                <a class="switch" href="javascript:;">切换</a>
+	            </div>
+	        </li>
+	        <li class="category-1 catg">
+	            <a href="{:U('Home/Index/category')}?id=1">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/1.png" alt="校园代步">
+	                </i>
+	                <h3>校园代步</h3>
+	            </a>
+	            <div class="sub-nav">
+	                <span>
+	                    <a href="{:U('Home/Index/category')}?id=2">自行车</a>
+	                    <a href="{:U('Home/Index/category')}?id=3">电动车</a>
+	                </span>
+	            </div>
+	        </li>
+	        <li class="category-2 catg">
+	            <a href="{:U('Home/Index/category')}?id=4">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/2.png" alt="手机">
+	                </i>
+	                <h3>手机</h3>
+	            </a>
+	        </li>
+	        <li class="category-3 catg">
+	            <a href="{:U('Home/Index/category')}?id=5">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/3.png" alt="电脑">
+	                </i>
+	                <h3>电脑</h3>
+	            </a>
+	            <div class="sub-nav">
+	                <span>
+	                    <a href="{:U('Home/Index/category')}?id=6">笔记本</a>
+	                    <a href="{:U('Home/Index/category')}?id=7">台式机</a>
+	                </span>
+	            </div>
+	        </li>
+	        <li class="category-4 catg">
+	            <a href="{:U('Home/Index/category')}?id=8">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/4.png" alt="数码配件">
+	                </i>
+	                <h3>数码配件</h3>
+	            </a>
+	            <div class="sub-nav">
+	                <span>
+	                    <a href="{:U('Home/Index/category')}?id=16">耳机</a>
+	                    <a href="{:U('Home/Index/category')}?id=17">移动硬盘</a>
+	                    <a href="{:U('Home/Index/category')}?id=18">键盘</a>
+	                    <a href="{:U('Home/Index/category')}?id=19">鼠标</a>
+	                    <a href="{:U('Home/Index/category')}?id=20">充电器</a>
+	                    <a href="{:U('Home/Index/category')}?id=21">显示器</a>
+	                    <a href="{:U('Home/Index/category')}?id=22">其他</a>
+	                    <a href="{:U('Home/Index/category')}?id=53">移动电源</a>
+	                </span>
+	            </div>
+	        </li>
+	        <li class="category-5 catg">
+	            <a href="{:U('Home/Index/category')}?id=15">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/5.png" alt="数码">
+	                </i>
+	                <h3>数码</h3>
+	            </a>
+	            <div class="sub-nav">
+	                <span>
+	                    <a href="{:U('Home/Index/category')}?id=9">mp3/mp4</a>
+	                    <a href="{:U('Home/Index/category')}?id=10">相机</a>
+	                    <a href="{:U('Home/Index/category')}?id=11">单反</a>
+	                    <a href="{:U('Home/Index/category')}?id=12">游戏机</a>
+	                    <a href="{:U('Home/Index/category')}?id=13">平板</a>
+	                    <a href="{:U('Home/Index/category')}?id=14">其他</a>
+	                </span>
+	            </div>
+	        </li>
+	        <li class="category-6 catg">
+	            <a href="{:U('Home/Index/category')}?id=23">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/6.png" alt="电器">
+	                </i>
+	                <h3>电器</h3>
+	            </a>
+	            <div class="sub-nav">
+	                <span>
+		                <a href="{:U('Home/Index/category')}?id=31">电扇</a>
+		                <a href="{:U('Home/Index/category')}?id=32">台灯</a>
+		                <a href="{:U('Home/Index/category')}?id=33">洗衣机</a>
+		                <a href="{:U('Home/Index/category')}?id=34">电吹风</a>
+		                <a href="{:U('Home/Index/category')}?id=35">电水壶</a>
+		                <a href="{:U('Home/Index/category')}?id=36">空调</a>
+		                <a href="{:U('Home/Index/category')}?id=37">电视</a>
+		                <a href="{:U('Home/Index/category')}?id=38">其他</a>
+		            </span>
+	            </div>
+	        </li>
+	        <li class="category-7 catg">
+	            <a href="{:U('Home/Index/category')}?id=30">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/7.png" alt="运动健身">
+	                </i>
+	                <h3>运动健身</h3>
+	            </a>
+	            <div class="sub-nav">
+	                <span>
+	                    <a href="{:U('Home/Index/category')}?id=24">篮球</a>
+	                    <a href="{:U('Home/Index/category')}?id=25">足球</a>
+	                    <a href="{:U('Home/Index/category')}?id=26">球拍</a>
+	                    <a href="{:U('Home/Index/category')}?id=27">哑铃</a>
+	                    <a href="{:U('Home/Index/category')}?id=28">轮滑</a>
+	                    <a href="{:U('Home/Index/category')}?id=29">其他</a>
+	                </span>
+	            </div>
+	        </li>
+	        <li class="category-8 catg">
+	            <a href="{:U('Home/Index/category')}?id=39">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/8.png" alt="衣物伞帽">
+	                </i>
+	                <h3>衣物伞帽</h3>
+	            </a>
+	            <div class="sub-nav">
+	                <span>
+	                    <a href="{:U('Home/Index/category')}?id=46">上衣</a>
+	                    <a href="{:U('Home/Index/category')}?id=47">裤子</a>
+	                    <a href="{:U('Home/Index/category')}?id=48">背包</a>
+	                    <a href="{:U('Home/Index/category')}?id=49">雨伞</a>
+	                    <a href="{:U('Home/Index/category')}?id=50">鞋</a>
+	                    <a href="{:U('Home/Index/category')}?id=51">帽子</a>
+	                    <a href="{:U('Home/Index/category')}?id=52">其他</a>
+	                </span>
+	            </div>
+	        </li>
+	        <li class="category-9 catg">
+	            <a href="{:U('Home/Index/category')}?id=45">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/9.png" alt="图书教材">
+	                </i>
+	                <h3>图书教材</h3>
+	            </a>
+	            <div class="sub-nav">
+	                <span>
+	                    <a href="{:U('Home/Index/category')}?id=40">教材</a>
+	                    <a href="{:U('Home/Index/category')}?id=41">考研</a>
+	                    <a href="{:U('Home/Index/category')}?id=42">托福/雅思/GRE</a>
+	                    <a href="{:U('Home/Index/category')}?id=43">课外书</a>
+	                    <a href="{:U('Home/Index/category')}?id=44">其他</a>
+	                </span>
+	            </div>
+	        </li>
+	        <li class="category-10 catg">
+	            <a href="{:U('Home/Index/category')}?id=59">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/10.png" alt="租赁">
+	                </i>
+	                <h3>租赁</h3>
+	            </a>
+	            <div class="sub-nav">
+	                <span>
+	                    <a href="{:U('Home/Index/category')}?id=60">租房</a>
+	                    <a href="{:U('Home/Index/category')}?id=61">服装</a>
+	                    <a href="{:U('Home/Index/category')}?id=62">道具</a>
+	                    <a href="{:U('Home/Index/category')}?id=63">其他</a>
+	                </span>
+	            </div>
+	        </li>
+	        <li class="category-11 catg">
+	            <a href="{:U('Home/Index/category')}?id=71">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/11.png" alt="生活娱乐">
+	                </i>
+	                <h3>生活娱乐</h3>
+	            </a>
+	            <div class="sub-nav">
+	                <span>
+	                    <a href="{:U('Home/Index/category')}?id=72">乐器</a>
+	                    <a href="{:U('Home/Index/category')}?id=73">日常用品</a>
+	                    <a href="{:U('Home/Index/category')}?id=74">虚拟账号</a>
+	                    <a href="{:U('Home/Index/category')}?id=75">会员卡</a>
+	                    <a href="{:U('Home/Index/category')}?id=76">化妆品</a>
+	                    <a href="{:U('Home/Index/category')}?id=77">其他</a>
+	                </span>
+	            </div>
+	        </li>
+	        <li class="category-12 catg">
+	            <a href="{:U('Home/Index/category')}?id=127">
+	                <i class="nav-icons">
+	                    <img src="__PUBLIC__/css/images/12.png" alt="其他">
+	                </i>
+	                <h3>其他</h3>
+	            </a>
+	        </li>
+	    </ul>
+	</nav>
+	<div class="container">
+    

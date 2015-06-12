@@ -1,0 +1,42 @@
+	<script type="text/javascript">
+	$(function(){
+		$(".id_state.fail").click(function(){
+			$("#id_state_info").addClass("hide");
+			$(".id_it").removeClass("hide");
+		});
+	});
+	
+	</script>
+	<ul id="middle_nav" class="clearfix">
+        <li><a href="{:U('Home/User/index')}">个人资料</a></li>
+        <li><a href="{:U('Home/User/goods')}">我发布的商品</a></li>
+        <li><a href="{:U('Home/User/favorites')}">我的收藏</a></li>
+        <li><a href="{:U('Home/User/message')}">消息中心</a></li>
+        <li class="on"><a href="{:U('Home/User/cert')}">认证信息</a></li>
+    </ul>
+    <div class="pop-tip hide">
+        <div class="pop-tip-area">
+            <p class="pop-tip-txt">修改成功</p>
+        </div>
+    </div>
+    <div id="identify">
+        <div id="student_id" class="id_ways">
+            <div class="id_right_part">
+                <a class="id_it" href="{:U('Home/User/student')}">立即认证</a>
+		        <div id="id_state_info" class="hide">
+		            <span class="id_state fail" title="点此重新认证">认证失败！</span>
+		            <p>认证失败原因：您上传的图片清晰度不够</p>
+		        </div>
+            </div>
+            <div class="id_left_part">
+                <img src="__PUBLIC__/css/images/student_pic.png" alt="学号">
+                <div class="id_info">
+                    <h1>学号认证</h1>
+                    <p>条件：学号姓名与学生证匹配</p>
+                    <p>奖励：+150&nbsp;积分</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

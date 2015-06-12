@@ -1,0 +1,67 @@
+	<script type="text/javascript" src="__PUBLIC__/js/user-goods.js"></script>
+	<ul id="middle_nav" class="clearfix">
+        <li><a href="{:U('Home/User/index')}">个人资料</a></li>
+        <li class="on"><a href="{:U('Home/User/goods')}">我发布的商品</a></li>
+        <li><a href="{:U('Home/User/favorites')}">我的收藏</a></li>
+        <li><a href="{:U('Home/User/message')}">消息中心</a></li>
+        <li><a href="{:U('Home/User/cert')}">认证信息</a></li>
+    </ul>
+    <div class="pop-tip hide">
+        <div class="pop-tip-area">
+            <p class="pop-tip-txt">修改成功</p>
+        </div>
+    </div>
+    <div id="my_products">
+    	<div id="onsale_pro">
+	        <h1>正在出售</h1>
+    		<foreach name="my_products" item="vo">
+	        	<eq name="vo.salestate" value="0">
+		            <div class="enshr_each">  
+		                <div class="enshr_info">
+		                    <h2><a href="{:U('Home/goods/index')}/goodsid/{$vo.goodid}" title="{$vo.goodname}">{$vo.goodname}</a></h2>
+		                    <p>{$vo.gooddes}</p>
+		                    <div class="enshr_state">
+		                        <span class="enshrine_it" onclick="sold({$vo.goodid});">确认售出</span>
+		                        <span class="enshrine_it make_edition" onclick="off_shelf({$vo.goodid});">下架</span>
+		                        <a href="{:U('Home/edit/index')}/goodsid/{$vo.goodid}" target="_blank">
+		                            <span class="enshrine_it  make_edition">编辑</span>
+		                        </a>
+		                        <span class="auto_out">
+		                        	<?php 
+		                        		$startdate=strtotime($vo["pubtime"]);
+										$days=30-round((time()-$startdate)/3600/24);
+										$days=$days<1?1:$days;
+										echo $days.'天后自动下架';
+		                        	?>
+		                        </span>
+		                    </div>
+		                </div>
+		                <a href="{:U('Home/goods/index')}/goodsid/{$vo.goodid}">
+		                    <img class="enshr_ph" src="{$vo.goodimg1}" alt="{$vo.goodname}">
+		                </a>
+		            </div>
+	            </eq>
+	        </foreach>
+	    </div>
+        <div id="sold_out_pro">
+            <h1>已下架</h1>
+            <foreach name="my_products" item="vo">
+	            <eq name="vo.salestate" value="1">
+		            <div class="enshr_each">  
+		                <div class="enshr_info">
+		                    <h2><a href="{:U('Home/goods/index')}/goodsid/{$vo.goodid}" title="{$vo.goodname}">{$vo.goodname}</a></h2>
+		                    <p>{$vo.gooddes}</p>
+		                    <div class="enshr_state">
+		                        <span class="enshrine_it" onclick="on_shelf({$vo.goodid});">重新上架</span>
+		                    </div>
+		                </div>
+		                <a href="{:U('Home/goods/index')}/goodsid/{$vo.goodid}">
+		                    <img class="enshr_ph" src="{$vo.goodimg1}" alt="{$vo.goodname}">
+		                </a>
+		            </div>
+	            </eq>
+            </foreach>
+        </div>
+        
+    </div>
+</div>

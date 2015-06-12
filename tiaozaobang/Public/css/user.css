@@ -1,0 +1,161 @@
+.main { width: 920px; min-height: 600px;}
+.hide{ display:none!important;}
+.show{ display: block!important;}
+.hidden{ visibility: hidden;}
+/*******************顶部用户信息 begin**********************/
+.top{ margin-top: 50px; height: 220px;}
+#user_photo{ position: relative; background: #F6F9F9; padding: 20px; width: 180px; height: 180px;}
+#user_photo img{ width: 180px; height: 180px; border-radius: 100%; -webkit-border-radius: 100%; -moz-border-radius: 100%; -ms-border-radius: 100%; cursor: pointer;}
+
+/***********头像上传对话操作区 begin***********/
+.head-img-box{ width: 100%; height: 100%; background-color: rgba(0,0,0,.3); position:fixed; z-index:99999; top: 0; left: 0;}
+.wrap-head-img{ background-color: #fff; position: absolute; top: 50%; left: 50%; margin-left: -270px; margin-top: -270px; border-top: 2px solid #00ac90; border-radius: 3px; width: 540px; height: 540px;}
+.wrap-head-img .head-title{ border-bottom: 1px solid #f2f2f5; padding: 0 0 0 16px; color: #333; font-size: 14px; line-height: 38px;}
+.wrap-head-img .head-title>a{ font-size: 14px; color: #333; position: absolute; top: 0px; right: 16px; font-family: 'Microsoft YaHei';}
+.wrap-head-img .head-title>a:hover{ color: #00ac90;}
+.wrap-head-img .head-img-area{ padding: 16px; height: 418px;}
+.head-img-area .wrap-img{ background-color: #f2f2f5; height: 100%; text-align: center;}
+.wrap-previewArea{ width: 200px; height: 260px; background-color: rgba(100,203,179,0.8); position: absolute; top: 0; right: -220px; z-index: 10;}
+.wrap-previewArea p{ display: block; padding: 5px; text-align: center; background-color: rgba(255,178,0,0.8); line-height: 20px; font-size: 16px; font-weight: bold; color: #ccc;}
+.previewArea{ width:200px; height:200px; position:relative; overflow:hidden; float:left;}
+#previewImg{ position:absolute; top: 0; left: 0;}
+#selectbanner{ max-width:100%; max-height:100%; min-width:200px; vertical-align: middle; text-align:center;}
+#op-container{ width: 100%; height: 100%; position: absolute; top: 0; left: 0;}
+.btn-upload-img{ display: inline-block; font-size: 12px; color: #333; padding: 0 8px; height: 24px; line-height: 24px; margin-top: 200px; background-color: #fff; border: 1px solid #d9d9d9; border-radius: 2px; }
+.btn-upload-img>i{ display: inline-block; color: #4bc0a5; font-size: 18px; margin-right: 5px; font-weight: bold; vertical-align: -2px;}
+.wrap-img .img-limit{ color: #808080; font-size: 12px; margin-top: 8px; text-align: center;}
+.wrap-img .person-img{ max-width: 100%!important; max-height: 100%!important;}
+.head-img-footer{ background-color: #fff; display: inline-block; width: 100%; text-align: center; height: 50px; vertical-align: middle; line-height: 50px;}
+.head-img-footer>a{ display: inline-block; width: 72px; height: 32px; line-height: 32px; font-size: 14px; margin-right: 5px; text-align: center; vertical-align: middle; border-radius: 2px;}
+.head-img-footer .btn-ok{ border: 1px solid #00ac90; background-color: #00ac90; color: #fff; -webkit-transition:all .4s linear; -moz-transition:all .4s linear; -ms-transition:all .4s linear; transition:all .4s linear;}
+.head-img-footer .btn-ok:hover{ background-color: #4bc0a5; border: 1px solid #4bc0a5;}
+.head-img-footer .btn-cancel{ border: 1px solid #d9d9d9; color: #333;}
+#change_ph{ position: absolute; top: 20px; left: 20px; }
+/***********头像上传对话操作区 end***********/
+
+#user_msg{ position: relative; background: #fff; float: right; width: 700px; height: 220px;}
+.name{ font: 26px "Microsoft YaHei"; margin: 20px 0px 0px 20px;}
+.has_sell{ font-size: 16px; color: #878787; line-height: 120%; margin-top: 10px; margin-left: 20px;}
+.seller_attr{ border-left: 4px solid #00ac90; margin-top: 22px; margin-left: 20px; padding-left: 20px;}
+.seller_attr>li{ color: #00ac90; font-size: 14px; line-height: 120%; padding:6px 0; list-style: none;}
+.seller_attr>li>span{ display: inline-block; width: 50px;}
+.seller_attr>li a{ font-size: 12px; color: #858D8E;}
+.grade_prof{ margin-left: 10px; height: 32px; vertical-align: bottom;}
+.about_level{ float: right; font: 12px "Microsoft YaHei"; color: #858E8F; text-decoration: none; margin: 30px 20px 0px 0px ;}
+.about_level:hover{ text-decoration: underline;}
+#need_value{ background: #00AC90; position: absolute; bottom: 0px; height: 20px; z-index: 50; width: 100%;}
+#got_value{ background: #FFB200; position: absolute; bottom: 0px; height: 20px; z-index: 60; width: 100px;}
+#grade_value_btn{ position: absolute; bottom: -5px; left: 90px; z-index: 70;}
+#value_box{ background: url("images/value_box.png") center bottom no-repeat; position: absolute; bottom: 30px; left: 35px; z-index: 70; width: 140px; height: 105px;}
+#value_box li{ color: #FFFFFF; list-style: none; font: 14px "Microsoft YaHei"; margin: 8px 0px 0px 25px;}
+/*******************顶部用户信息 end**********************/
+
+/*******************顶部用户信息 end**********************/
+#middle_nav{ background: #fff; border-top: 4px solid #00AC90; height: 55px; margin-top:  50px; }
+#middle_nav li{ float: left; list-style: none; height: 100%; width: 184px; }
+#middle_nav li a{ display: block; height: 55px; color: #444; font: 16px/54px "Microsoft YaHei"; text-decoration: none; text-align: center; }
+#middle_nav li:hover{ background: #00AC90; }
+#middle_nav li:hover a{ color: #fff; }
+#middle_nav li.on{ background: #00AC90; }
+#middle_nav li.on a{ color: #fff; }
+/*******************顶部用户信息 end**********************/
+
+/*******************修改成功提示 begin**********************/
+.pop-tip{ position: fixed;  z-index:999;  width: 100%;  height: 100%;  background-color: rgba(0,0,0,.65);  top:0;  left: 0; }
+.pop-tip .pop-tip-area{ position: absolute;  width: 340px;  height: 120px;  top: 50%;  left: 50%;  margin-left: -170px;  margin-top: -60px;  background-color: #fff;  text-align: center; }
+.pop-tip .pop-tip-txt{ display: inline-block;  margin-top: 45px;  height: 30px;  line-height: 30px;  padding-left: 42px;  background: url("images/identify_suc.png") no-repeat left center;  font-size: 20px;  color: #1abc9c; }
+/*******************修改成功提示 end**********************/
+
+/*******************用户个人资料样式 begin**********************/
+#my_info{ background: #fff; width: 800px; margin-top: 20px; padding-bottom: 20px; padding: 40px 60px; }
+#my_info li{ list-style: none; }
+#account_info h2,#base_info h2{ border-bottom: 1px solid #00AC90; font: 16px "Microsoft YaHei"; color: #00AC90;  padding-bottom: 7px; width: 480px; margin: 20px; }
+.infos{ color: #444; font: 14px "Microsoft YaHei"; margin: 10px 0px 0px 20px; }
+#my_info .infos li{ display: inline-block; zoom: 1; *display: inline; width: 60px; text-align: left; line-height: 30px; vertical-align: middle; }
+#my_info .infos li.right_info{ display: inline; text-align: left; margin-left: 30px; }
+#changepwd{ display: inline; color: #4BC0A5;}
+#changepwd:hover{ color: #FFB200;}
+#my_info .right_info span{ display: inline; } 
+#my_info .right_info input{ display: none; border: 1px solid #C4CBCE; -webkit-border-radius: 15px; -moz-border-radius: 15px; -ms-border-radius: 15px; width: 180px; height: 30px; text-indent: 16px; *line-height: 30px; } 
+#my_info .right_info input:focus{ border: 1px solid #3CC2A5; } 
+#wrap_changepwd{ display: none; padding: 10px 5px 10px 5px; margin: 5px 0 0 20px; border: 1px solid #dfdfdf; border-radius: 15px;  -webkit-border-radius: 15px; -moz-border-radius: 15px; -ms-border-radius: 15px;}
+#wrap_changepwd input{ display: inline!important; }
+p.remind_info{ color: #ff4a00; font-size: 14px; line-height: 30px; padding-left: 20px; display: inline-block; vertical-align: middle;}
+#op_changepwd{ display: block; width: 200px; height: 30px; padding: 5px 0 5px 50px; }
+#ensure,#exit{ background: #fff; border: 1px solid #4BC0A5; text-align: center; color: #4BC0A5; line-height: 26px; width: 68px; float: left; margin-right: 30px; display: block; border-radius: 13px; 
+                    -webkit-border-radius: 13px; -moz-border-radius: 13px; -ms-border-radius: 13px; cursor: pointer;}
+#ensure:hover,#exit:hover{ background: #4BC0A5; color: #fff;}
+#base_info{ margin-top: 30px; }
+#base_info h2{ position: relative; }
+#edit_info,#save_info{ background: #fff; border: 1px solid #4BC0A5; text-align: center; line-height: 26px; width: 68px; position: absolute; right: 0px; bottom: -13px; display: block; border-radius: 13px; 
+                    -webkit-border-radius: 13px; -moz-border-radius: 13px; -ms-border-radius: 13px; cursor: pointer; }
+#edit_info:hover{ background: #4BC0A5; color: #fff; }
+#save_info{ display: none; background: #4BC0A5; color: #fff; }
+#save_info:hover{ background: #fff; color: #4BC0A5; }
+/*******************用户个人资料样式 end**********************/
+
+
+/*********************************用户发布的商品 begin***********************************/
+#my_products{ width: 920px; min-height: 300px; margin-top: 20px; padding-bottom: 20px; }
+#my_products h1{ width: 200px; height: 22px; overflow: hidden; text-indent:  200px; white-space: nowrap; }
+#onsale_pro h1{ background: url("images/onsailing.png")  no-repeat; }
+#sold_out_pro h1{ margin-top: 20px; background: url("images/sold_out.png")  no-repeat; }
+#my_enshrine{ width: 920px; margin-top: 20px; padding-bottom: 20px; }
+.enshr_each{ background: #fff; height: 140px; margin-top: 10px; }
+.enshr_ph{ width: 140px; height: 140px; }
+.enshr_ph:hover{ opacity: .85; }
+.enshr_info{ position: relative; float: right; width: 740px; padding: 20px; }
+.enshr_info_price{ color: #ed4e51; font-size: 16px; float: right; margin-right: 48px; }
+.enshr_info_address{ color: #858E8F; font-size: 12px; padding-left: 22px; background-image: url("images/rank-icons.png"); background-repeat: no-repeat; background-position: -10px -12px; display: inline-block; height: 20px; }
+.enshr_info h2 { margin-bottom: 10px; }
+.enshr_info h2 a{ color: #1b816c; font: 14px "Microsoft YaHei"; text-decoration: none; }
+.enshr_info h2 a:hover{ color: #EB5055; }
+.enshr_info p{ color: #666; font: 12px "Microsoft YaHei"; margin-bottom: 10px; height: 35px; overflow: auto; }
+.enshr_state{ position: absolute; bottom: -10px; width: 100%; }
+.enshr_info_address { color: #858E8F; font-size: 12px; padding-left: 22px; background-image: url("images/rank-icons.png"); background-repeat: no-repeat; background-position: -10px -12px; display: inline-block; height: 20px; }
+.onsaling,.auto_out{ color: #FFB200; font: 12px "Microsoft YaHei"; }
+.sold,.auto_delete{ color: #EB5054; font: 12px "Microsoft YaHei"; }
+.sold_out{ color: #999; font: 12px "Microsoft YaHei"; }
+.enshrine_it{ font: 12px "Microsoft YaHei"; float: right; margin-right: 50px; display: block; color: #4BC0A5; border: 1px solid #4BC0A5; padding: 3px 16px; -webkit-border-radius: 13px; -moz-border-radius: 13px; -ms-border-radius: 13px; cursor: pointer; }
+#my_messages h1 span.enshrine_it:hover{ color: #fff; background: #4BC0A5; }
+#my_enshrine .enshr_state span.enshrine_it:hover,#my_products .enshr_state span.enshrine_it:hover{ color: #FFC600; border: 1px solid #FFC600; }
+.make_edition{ margin-right: 10px; }
+/*********************************用户发布的商品 end***********************************/
+
+/*********************************用户消息中心 begin***********************************/
+#my_messages{ min-height: 300px; background: #fff; margin-top: 20px; padding-bottom: 20px; padding: 40px 60px 0px 22px ; overflow: hidden; }
+#my_messages h1{ position: relative; color: #00AC90; border-bottom: 1px solid #00AC90; font: 16px "Microsoft YaHei"; padding-bottom: 10px; margin-left:  22px; }
+#my_messages h1 span{ background: #fff; position: absolute; bottom: -10px; right: -50px; }
+.each_msg{ position: relative; background: #fff; height: 100px; margin-top: 17px; padding-left: 22px; }
+.each_msg.unread{ background: #fff; background: url("images/unread.png") center left no-repeat; }
+.msg_ph{ width: 80px; height: 80px; border-radius: 100%; -webkit-border-radius: 100%; -moz-border-radius: 100%; -ms-border-radius: 100%; cursor: pointer; }
+.ensh_tips{ position: relative; float: right; width: 705px; height: 80px; }
+.ensh_tips  p{ line-height: 24px; }
+.msg_border{ margin-top: 15px; background:  #E3EEEC; height: 1px; width: 815px; }
+.enshrine_yous,.reply_yours,.cmd_yours,.sold_out_yours,.delete_yours{ color: #444; font: 12px "Microsoft YaHei"; }
+.which_pro{ position: absolute; bottom: 0px; font: 12px "Microsoft YaHei"; color: #7F7F7F; width: 700px; }
+.which_pro span a{ color: #197F6C; text-decoration: none; font: 12px "Microsoft YaHei"; }
+.which_pro span a:hover{ color: #EB5054; }
+.which_pro:hover .specific{ display: inline; }
+/*********************************用户消息中心 end***********************************/
+
+/*********************************用户实名认证 begin***********************************/
+#identify{ background: #fff; width: 800px; padding: 30px 60px; min-height: 200px; margin-top: 20px; padding-bottom: 20px; }
+.id_ways{ background: #F6F9F9; width: 740px; height: 120px; padding: 30px; }
+.id_info{ float: left; font: 14px "Microsoft YaHei"; margin-top: 16px; margin-left: 30px; }
+.id_info h1{ font: 18px "Microsoft YaHei"; margin-bottom: 10px; color: #D55C4B;}
+.id_info p{ line-height: 30px; color: #666666; }
+.id_it{ background: url("images/id_it.png") center left no-repeat; width: 140px; height: 40px; text-indent: 150px; overflow: hidden; white-space: nowrap; display: block; margin-top: 45px; }
+.id_it:hover{ background: url("images/id_it_1.png") center left no-repeat; }
+.id_it2{ background: url("images/checking.png") center left no-repeat; width: 140px; height: 40px; text-indent: 150px; overflow: hidden; white-space: nowrap; display: block; margin-top: 45px; }
+.id_right_part{ float: right; }
+.id_left_part { width: 410px; }
+.id_left_part img{ 	float: left; }
+#id_state_info{ width: 200px; height: 120px; text-align: center;}
+#id_state_info .id_state{ font: 30px "Microsoft YaHei";}
+.id_state.success{ color:#00AC90;}
+.id_state.iding{ color:#FFF41D;}
+.id_state.fail{ color:#FF1100; cursor: pointer;}
+.id_state.fail:hover{ color: #FF9C5F; }
+#id_state_info p{ padding: 10px 5px; line-height: 18px; font: 14px "Microsoft YaHei";}
+/*********************************用户实名认证 end***********************************/

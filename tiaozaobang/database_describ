@@ -1,0 +1,52 @@
+user表
+'userid','username','pwd','email','tel','qq','headimg','schoolid','deptid','grade','integral','identstate','state','lastlogin'
+
+goods表
+'goodid','goodname','sellerid','gooddes','price','place','category','discount','pubtime','goodimg1','goodimg2','goodimg3','goodimg4','salestate','views'    注：'salestate' 0-正在出售 1-已下架  2-已售出
+
+school_dept表
+'schoolid','schoolname','deptid','deptname','shortname'
+
+school表
+'schoolid','schoolname'
+
+department表
+'deptid','deptname','shortname','parentschool'
+
+category表
+'id','cataName','parentCata'
+
+collection表
+'id','userid','goodsid'
+
+message表
+'msgid','senderid','receiverid','goodsid','msgcontent','sendtime','parentmsg','haveread','msgtype'
+注：'msgtype' 0-评论 1-收藏
+
+管理员表（admin）
+'id','username','pwd','manageschool'
+
+用户认证表（cert）
+'id','userid','realname','sno','scard','identstate'
+
+举报表（report）
+'id','reporter','goodsid'
+
+公告表（notice）
+'id','content','publisher','pubtime','isdel'
+
+自动下架30天前的商品
+select * from goods where date_sub(curdate(), INTERVAL 30 DAY) > date(`pubtime`)
+
+问题描述,现有两张表user表和message表，欲建立视图CommentView
+user表
+'userid','username','pwd','email','tel','qq','headimg'
+
+message表
+'msgid','senderid','receiverid','goodsid','msgcontent','sendtime','parentmsg','haveread','msgtype'
+
+建立视图CommentView
+'msgid','senderid','receiverid','msgcontent','sendername','receivername'
+
+实现类似功能的sql语句
+select msgid,senderid,receiverid,msgcontent,a.username sendername,b.username receivername from message,user a,user b where a.userid=message.senderid and b.userid=message.receiverid 

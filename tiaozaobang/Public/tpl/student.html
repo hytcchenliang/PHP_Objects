@@ -1,0 +1,63 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/student.css">
+<script type="text/javascript" src="__PUBLIC__/js/student.js"></script>
+<div class="main center">
+    <div class="identify-wrapper center">
+        <div class="identify-hd center">
+            <div class="l-triangle"></div>
+            <h2>商品发布规则</h2>
+            <div class="r-triangle"></div>
+        </div>
+        <div class="idtf-content">
+            <ul class="idtf-steps">
+                <li>
+                    <span class="idtf-o">1</span>
+                    <span class="idtf-step">填写学号和姓名</span>
+                </li>
+                <li class="divide-l"></li>
+                <li>
+                    <span class="idtf-o">2</span>
+                    <span class="idtf-step">上传学生证照片</span>
+                </li>
+                <li class="divide-l"></li>
+                <li>
+                    <span class="idtf-o">3</span>
+                    <span class="idtf-step">提交认证审核</span>
+                </li>
+            </ul>
+            <div class="idtf-upload">
+                <div class="std_input_info">
+                    <div class="std_input">
+                        <span>姓名</span>
+                        <input value="" type="text" placeholder="请输入真实姓名" id="name">
+                    </div>
+                    <div class="std_input">
+                        <span>学号</span>
+                        <input name="uname" value="" type="text" placeholder="例201112913" id="stuno">
+                    </div>
+                </div>
+                <div class="idtf-photo" id="photo_area" style="position: relative;">
+                    <div class="upload-target">
+                        <span class="upload-tip">上传学生证照片(带有学号姓名页)</span>
+                        <span class="uploading hidden"><img src="/resource/image/uploading.gif">上传中</span>
+                        <span class="file-input" id="upload" style="z-index: 1;"></span>
+                    </div>
+                    <div id="unique_img" class="hidden">
+                        <div class="photo-area">
+                            <img id="photo" src="">
+                        </div>
+                        <div class="delete-photo"><a href="javascript:;">删除</a></div>
+                    </div>
+                <div id="html5_19kq4u59oj716pp18241g8anmp3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 30px; left: 245px; width: 430px; height: 60px; overflow: hidden; z-index: 0;"><input id="html5_19kq4u59oj716pp18241g8anmp3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" accept="image/*" capture="camera"></div></div>
+                <div id="identify-btn">
+                    <a href="javascript:;">提交认证</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="succeed-container hidden">
+        <div class="idtf-succeed">
+            <div class="suc-tip"><span>已提交认证</span></div>
+            <span>跳蚤帮很快会给您一个交代的</span>
+        </div>
+    </div>
+</div>

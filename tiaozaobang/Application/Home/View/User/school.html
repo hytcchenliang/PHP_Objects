@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>跳蚤帮，学生闲置物品交易平台</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="Keywords" content="校内，大学生，学生，二手物品，网上跳蚤市场，闲置物品，二手货，交易">
+	<meta name="Description" content="跳蚤帮 校园里的一个真实的跳蚤市场，快来看看有没有你需要的，或是有自己想出手的，闲着也是闲着，说不定还能见到帅哥美女哦。">
+	<link rel="icon" href="__PUBLIC__/css/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/school.css">
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/school.js"></script>
+</head>
+<body>
+	<div id="department-container">
+		<div id="department-wrapper">
+			<div class="sel-head">
+				<h2>
+					选择你的学校
+				</h2>
+			</div>
+			<div class="sel-body">
+				<div class="sel-school" pk="">
+					<div class="sel-hd">
+						<h3>
+							学校
+						</h3>
+						<input type="text" value="" readonly="true" class="department-item">
+						<a href="javascript:;">
+							<img src="__PUBLIC__/css/images/arr-right.png">
+						</a>
+					</div>
+					<div class="sel-content">
+						<!-- <div class="school-search">
+							<input placeholder="请输入学校名称" type="text" value="" class="">
+							<ul class="search-down hidden">
+							</ul>
+						</div> -->
+						<ul class="sel-items">
+							<foreach name="school_items" item="vo" >
+							    <li>
+									<a href="javascript:;" value="{$vo.schoolid}">{$vo.schoolname}</a>
+								</li>
+							</foreach>
+						</ul>
+					</div>
+				</div>
+				<div class="sel-academy" pk="">
+					<div class="sel-hd">
+						<h3>
+							院系
+						</h3>
+						<input type="text" value="" class="department-item" readonly="true">
+						<a href="javascript:;">
+							<img src="__PUBLIC__/css/images/arr-right.png">
+						</a>
+					</div>
+					<div class="sel-content">
+						<ul class="sel-items">
+						</ul>
+					</div>
+				</div>
+				<div class="sel-adyear" pk="">
+					<div class="sel-hd">
+						<h3>
+							入学时间
+						</h3>
+						<input type="text" value="" class="department-item" readonly="true">
+						<a href="javascript:;">
+							<img src="__PUBLIC__/css/images/arr-right.png">
+						</a>
+					</div>
+					<div class="sel-content">
+						<ul class="sel-items">
+							<foreach name="year_items" item="vo" >
+							    <li>
+									<a href="javascript:;" value="{$vo}">{$vo}</a>
+								</li>
+							</foreach>
+						</ul>
+					</div>
+				</div>
+				<div class="optpk-container hidden">
+					<p>学校信息提交后将不可更改，请仔细确认</p>
+					<div class="optpk-btn">
+					</div>
+				</div>
+				<p class="tip hidden">提交信息成功，<i>3</i>秒后为您自动跳转到首页</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

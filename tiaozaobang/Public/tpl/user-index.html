@@ -1,0 +1,74 @@
+    <script type="text/javascript" src="__PUBLIC__/js/user-index.js"></script>
+    <ul id="middle_nav" class="clearfix">
+        <li class="on"><a href="{:U('Home/User/index')}">个人资料</a></li>
+        <li><a href="{:U('Home/User/goods')}">我发布的商品</a></li>
+        <li><a href="{:U('Home/User/favorites')}">我的收藏</a></li>
+        <li><a href="{:U('Home/User/message')}">消息中心</a></li>
+        <li><a href="{:U('Home/User/cert')}">认证信息</a></li>
+    </ul>
+    <div class="pop-tip hide">
+        <div class="pop-tip-area">
+            <p class="pop-tip-txt">修改成功</p>
+        </div>
+    </div>
+    <div id="my_info">
+        <div id="account_info">
+            <h2>账户信息</h2>
+            <ul class="infos">
+                <li>账号</li>
+                <li class="right_info"><span>{$cur_User.email}</span></li>
+            </ul>
+            <ul class="infos">
+                <li>密码</li>
+                <li class="right_info"><a href="javascript:;" id="changepwd">修改密码</a></li>
+            </ul>
+            <div id="wrap_changepwd">
+                <ul class="infos" id="oldPwd">
+                    <li>原密码</li>
+                    <li class="right_info"><input type="text" value=""></li> 
+                    <p class="remind_info"></p>
+                </ul>
+                <ul class="infos" id="newPwd">
+                    <li>新密码</li>
+                    <li class="right_info"><input type="password" value=""></li>
+                    <p class="remind_info"></p>
+                </ul>
+                <ul class="infos"  id="ensurePwd">
+                    <li>确认输入</li>
+                    <li class="right_info"><input type="password" value=""></li>
+                    <p class="remind_info"></p>
+                </ul>
+                <ul class="infos" id="op_changepwd">
+                    <span id="ensure">确定</span>
+                    <span id="exit">取消</span>
+                </ul>
+            </div>
+            
+        </div>
+        <div id="base_info">
+            <h2>基本信息 <span id="edit_info">编辑</span><span id="save_info">保存</span></h2>
+            <ul class="infos" id="usernick">
+                <li>昵称</li>
+                <li class="right_info">
+                    <span id="nickname_span">{$cur_User.username}</span>
+                    <input type="text" value="{$cur_User.username}" id="nickname">
+                    <p class="remind_info"></p>
+                </li> 
+            </ul>
+            <ul class="infos">
+                <li>手机</li>
+                <li class="right_info">
+                    <span id="phone_span">{$cur_User.tel}</span>
+                    <input type="text" value="{$cur_User.tel}" id="phone">
+                </li>
+            </ul>
+            <ul class="infos">
+                <li>QQ</li>
+                <li class="right_info">
+                    <span id="qq_span">{$cur_User.qq}</span>
+                    <input type="text" value="{$cur_User.qq}" id="qq">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

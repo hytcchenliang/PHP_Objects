@@ -1,0 +1,31 @@
+	<script type="text/javascript" src="__PUBLIC__/js/user-goods.js"></script>
+	<ul id="middle_nav" class="clearfix">
+        <li><a href="{:U('Home/User/index')}">个人资料</a></li>
+        <li><a href="{:U('Home/User/goods')}">我发布的商品</a></li>
+        <li class="on"><a href="{:U('Home/User/favorites')}">我的收藏</a></li>
+        <li><a href="{:U('Home/User/message')}">消息中心</a></li>
+        <li><a href="{:U('Home/User/cert')}">认证信息</a></li>
+    </ul>
+    <div class="pop-tip hide">
+        <div class="pop-tip-area">
+            <p class="pop-tip-txt">修改成功</p>
+        </div>
+    </div>
+    <div id="my_enshrine">
+	    <foreach name="my_enshrine" item="vo">
+	        <div class="enshr_each" id="goods{$vo.goodid}">
+	            <div class="enshr_info">
+	                <h2><a href="{:U('Home/goods/index')}/goodsid/{$vo.goodid}">{$vo.goodname}</a></h2>
+	                <p>{$vo.gooddes}</p>
+	                <div class="enshr_state"> 
+	                    <span class="enshrine_it" onclick="cancel_favorites({$vo.goodid});">取消收藏</span>
+	                    <eq name="vo.salestate" value="0"><span class="onsaling">出售中</span></eq>
+	                    <eq name="vo.salestate" value="1"><span class="onsaling">已下架</span></eq>
+	                    <eq name="vo.salestate" value="2"><span class="onsaling">已售出</span></eq>
+	                </div>
+	            </div>
+	            <img class="enshr_ph" src="{$vo.goodimg1}" alt="{$vo.goodname}">
+	        </div>
+	    </foreach>
+    </div>
+</div>

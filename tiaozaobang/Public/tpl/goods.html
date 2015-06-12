@@ -1,0 +1,120 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/goods.css">
+<script type="text/javascript">
+	$(function(){
+		$(".pri").hover(function(){
+			$("#up_down").removeClass("rerotate").addClass("rotate");
+		},function(){
+			$("#up_down").removeClass("rotate").addClass("rerotate");
+		});
+	});
+</script>
+<div class="main center">
+	<div class="category-name">
+		<!-- <if condition="($keyword == '')"> 最近发布 <else /> {$keyword} </if> -->
+		<!-- 两种写法均可 -->
+		{$keyword == ''?最近发布商品:$keyword}
+	</div>
+	<hr size="1" color="#4BC0A5">
+	<div class="rank-by clearfix cur1" data-cur="1">
+		<div class="rank-title-wr">
+			<a href="{$order_by1}">
+				<div class="rank-title default" data-rank="1">
+					默认
+				</div>
+			</a>
+			<a href="{$order_by2}">
+				<div class="rank-title cred" data-rank="2">
+					信用
+				</div>
+			</a>
+			<if condition="($order_by eq 3)">
+				<a class="pr rank-title-price" href="{$order_by4}">
+					<div class="rank-title pri " data-rank="3">
+						价格
+					</div>
+					<span id="up_down" order="up" class="price-up">
+					</span>
+				</a>
+			<elseif condition="($order_by eq 4)"/>
+				<a class="pr rank-title-price" href="{$order_by3}">
+					<div class="rank-title pri " data-rank="4">
+						价格
+					</div>
+					<span id="up_down" order="down" class="price-down">
+					</span>
+				</a>
+			<else /> 
+				<a class="pr rank-title-price" href="{$order_by3}">
+					<div class="rank-title pri " data-rank="3">
+						价格
+					</div>
+					<span id="up_down" order="nor" class="price-nor">
+					</span>
+				</a>
+			</if>
+			<a href="{$order_by5}">
+				<div class="rank-title hot" data-rank="5">
+					热度
+				</div>
+			</a>
+		</div>
+		<div class="wave ease2">
+		</div>
+	</div>
+	<div class="item-list">
+		<ul class="items clearfix">
+		<foreach name="match_goods" item="good">
+			<li class="item">
+				<a href="{:U('Home/goods/index')}?goodsid={$good.goodid}" class="img" target="_blank">
+					<img src="{$good.goodimg1}"
+					alt="{$good.goodname}">
+				</a>
+				<div class="info">
+					<div class="price">
+						{$good.price}
+					</div>
+					<div class="name">
+						<a href="{:U('Home/goods/index')}?goodsid={$good.goodid}" target="_blank">
+							{$good.goodname}
+						</a>
+					</div>
+					<div class="department">
+						<eq name="good.grade" value="0"> 游客用户 
+							<else />
+								<span>{$good.shortname}{$good.grade}级</span>
+						</eq>
+					</div>
+					<div class="identy">
+						<span>
+							<eq name="good.identstate" value="1"> (已认证) <else /> (未认证) </eq>
+						</span>
+					</div>
+					<div class="place">
+						<img class="locplace" src="__PUBLIC__/css/images/location.png">
+						<span>
+							{$good.place}
+						</span>
+					</div>
+				</div>
+			</li>
+			</foreach>	
+		</ul>
+	</div>
+	<div class="pages">
+		<if condition="($cur_page gt 1)">
+			<a class="page-arrow arrow-left" href="{$pre_page}">上一页</a>
+		</if>
+		<foreach name="pages_arr" item="vo" key="k">
+			<if condition="($k gt $cur_page-5)&&($k lt $cur_page+4)">
+				<if condition="($k eq $cur_page-1)">
+					<a class="page-num cur" href="{$vo}">{$k+1}</a>
+				<else />		
+					<a class="page-num" href="{$vo}">{$k+1}</a>
+				</if>
+			</if>
+		</foreach>
+		<if condition="($cur_page lt $page_count)">
+			<a class="page-arrow arrow-right" href="{$next_page}">下一页</a>
+		</if>
+	</div>
+</div>

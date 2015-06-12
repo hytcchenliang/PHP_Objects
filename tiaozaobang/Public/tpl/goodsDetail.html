@@ -1,0 +1,206 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/goodsDetail.css">
+<script type="text/javascript" src="__PUBLIC__/js/goodsdetail.js"></script>
+<div class="main center clearfix">
+	<div class="ershou-details">
+    	<div class="ershou-photos-wr">
+			<a class="ershou-favorite" href="javascript:void(0);" title="点此收藏" style="background-image:url('__PUBLIC__/css/images/heart.png');"
+			onclick="favorites();">{$favorites_count}</a>
+			<div class="bigger-photo-box">
+                <foreach name="goodsImg" item="vo" >
+                    <if condition="!empty($vo)">
+        				<a class="bigger-photo hide show" rel="img_group" target="_blank" href="{$vo}">
+        					<img class="bigger" src="{$vo}"
+        					alt="{$match_goods.goodname}">
+        				</a>
+                    </if>
+                </foreach>
+			</div>
+			<div class="ershou-photo-slide">
+                <foreach name="goodsImg" item="vo" >
+                    <if condition="!empty($vo)">
+                        <div class="ershou-small-photos">
+                            <img class="small" src="{$vo}">
+                        </div>
+                    </if>
+                </foreach>
+			</div>
+			<div class="ershou-photo-slide-layer">
+			</div>
+		</div>
+        <div class="ershou-info">
+            <eq name="show_eidt" value="1">
+                <div class="ershou-edit-bt">
+                    <div class="edit-border"></div>
+                    <a href="{:U('Home/edit/index')}/goodsid/{$match_goods.goodid}"></a>
+                </div>
+            </eq>
+            <div class="ershou-hd">
+                <h2 class="ershou-title">{$match_goods.goodname}</h2>
+                <div class="ershou-price discount">
+                    <span>{$match_goods.price}</span>
+                    <span class="is-discount">
+                        <if condition="$match_goods.discount eq 1">可小刀
+                            <else /> 不可刀
+                        </if>
+                    </span>
+                </div>
+                <p class="bro-counts">浏览了<span>{$match_goods.views}</span>次</p>
+            </div>
+            <ul class="ershou-detail">
+                <li class="ershou-place">
+                    <div class="name"><span>交易地点</span></div>
+                    <div class="value"><span>{$match_goods.place}</span></div>
+                </li>
+                <li class="ershou-seller">
+                    <div class="name"><span>卖家</span></div>
+                    <eq name="show_eidt" value="1">
+                        <a href="{:U('Home/User/index')}" target="_blank">
+                    <else/>
+                        <a href="{:U('Home/Profile/index')}/user/{$match_goods.sellerid}" target="_blank">
+                    </eq>
+                        <div class="value">
+                            <span class="value-name">{$match_UserInfo.username}</span>
+                            <img class="detail-grade" src="__PUBLIC__/css/images/ico_lv{$UserLevel}.png" alt="等级显示">
+                        </div>
+                    </a>
+                </li>
+                <li class="ershou-cert">
+                    <div class="name"><span>认证状态</span></div>
+                    <div class="value">
+                        <span>
+                            <eq name="match_UserInfo.grade" value="0"> 游客用户 
+                                <else />
+                                    {$match_UserInfo.shortname}{$match_UserInfo.grade}级
+                            </eq>
+                            <eq name="match_UserInfo.identstate" value="0">
+                                （未认证）
+                                <else />（已认证）
+                            </eq>
+                        </span>
+                    </div>
+                </li>
+                <if condition="!empty($match_UserInfo['tel'])">
+                    <li class="ershou-tel">
+                        <div class="name"><span>手机</span></div>
+                        <div class="value">
+                            <span class="user-num">{$match_UserInfo.tel}</span>
+                            <span class="user-login-tip">登录后查看完整号码</span>
+                        </div>
+                    </li>
+                </if>
+                <if condition="!empty($match_UserInfo['qq'])">
+                    <li class="ershou-phone">
+                        <div class="name"><span>QQ</span></div>
+                        <div class="value">
+                            <span class="user-num">{$match_UserInfo.qq}</span>
+                            <span class="user-login-tip">登录后查看完整号码</span>
+                        </div>
+                    </li>
+                </if>
+                <li class="ershou-time">
+                    <div class="name"><span>发布时间</span></div>
+                    <div class="value">
+                        <eq name="match_goods.salestate" value="0">
+                            <span class="real-time">{$match_goods.pubtime}</span>
+                            <else />
+                            <span class="sold-out">• 已售出 •</span>
+                        </eq>
+                    </div>
+                </li>
+            </ul>
+            <!-- JiaThis Button BEGIN 第三方分享内容工具接口-->
+			<div class="jiathis_style_32x32" style="margin-top: 5px;height:32px;line-height: 32px;margin-left: 25px;">
+				<span style="display: inline-block;float: left;font-size: 14px;color: #666;">分享到：</span>
+				<a class="jiathis_button_qzone"></a>
+				<a class="jiathis_button_tsina"></a>
+				<a class="jiathis_button_tqq"></a>
+				<a class="jiathis_button_weixin"></a>
+				<a class="jiathis_button_renren"></a>
+				<a href="http://www.jiathis.com/share?uid=2021985" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+			</div>
+			<script type="text/javascript">
+			var jiathis_config = {data_track_clickback:'true'};
+			</script>
+			<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2021985" charset="utf-8"></script>
+			<script type="text/javascript" src="http://v3.jiathis.com/code/plugin.client.js" charset="utf-8"></script>
+			<!-- JiaThis Button END -->
+            <div class="complain"><a href="javascript:void(0);" onclick="report();">•&nbsp;&nbsp;&nbsp;&nbsp;举报&nbsp;&nbsp;&nbsp;&nbsp;•</a></div>
+        </div>
+    </div>
+    <div class="ershou-desc">
+        <div class="desc clearfix">
+            <a href="{:U('Home/Profile/index')}/user/{$match_goods.sellerid}" target="_blank">
+                <img id="user_ph" src="{$match_UserInfo.headimg}">
+            </a>
+            <span id="user_cmt">
+                <?php echo (str_replace(array("\r\n", "\r", "\n"), '<br>', $match_goods["gooddes"])); ?>
+                <br>(联系我的时候，请说明是在校园跳蚤帮看见的噢！)</span>
+        </div>
+    </div>
+    <div class="comments">
+        <div class="comments-title">评论</div>
+        <div class="comments-wr">
+            <div class="comment-wr">
+            <foreach name="Comments" item="vo" >
+                <eq name="vo.parentmsg" value="0">
+                    <div class="comment">
+                        <img class="avatar" src="{$vo.senderimg}" alt="头像">
+                        <div class="commentator">
+                            {$vo.sendername}
+                        </div>
+                        <p class="comment">{$vo.msgcontent}</p>
+                        <div class="man">
+                            <span class="rpl" onclick="reply({$vo.msgid},{$vo.senderid},'{$vo.sendername}')">回复</span>
+                        </div>
+                    </div>
+                    <else/>
+                    <div class="comment">
+                        <img class="avatar" src="{$vo.senderimg}" alt="头像">
+                        <div class="commentator">
+                            {$vo.sendername}
+                            <span class="rpy-to">{$vo.receivername}</span>
+                        </div>
+                        <p class="comment">{$vo.msgcontent}</p>
+                        <div class="man">
+                            <span class="rpl" onclick="reply({$vo.msgid},{$vo.senderid},'{$vo.sendername}')">回复</span>
+                        </div>
+                    </div>
+                </eq>
+            </foreach>
+                
+                <div class="post-comment clearfix">
+                    <div class="comment-cover">
+                        <span class="loader loader-quart"></span>
+                    </div>
+                    <input id="nomalReceiverid" type="hidden" value="{$match_goods.sellerid}">
+                    <input id="goods_id" type="hidden" value="{$match_goods.goodid}">
+                    <input id="parentMsgId" type="hidden" value="0">
+                    <input id="receiverid" type="hidden" value="{$match_goods.sellerid}">
+                    <input id="senderid" type="hidden" value="{$cur_User_id}">
+                    <input id="receivername" type="hidden" value="">
+                    <if condition="!empty($cur_User_id)">
+                        <img class="avatar" src="{$cur_User.headimg}" alt="头像">
+                        <div class="commenting clearfix">
+                            <div class="comment-input-wr-wr">
+                                <div class="comment-input-wr">
+                                    <textarea class="comment-input" name="comment-input" placeholder=""></textarea>
+                                </div>
+                            </div>
+                            <input
+                            <button class="sub-comment" type="button"></button>
+                        </div>
+                        <else />
+                        <img class="avatar" src="__PUBLIC__/css/images/avatar-unlogin.png" alt="头像">
+                        <div class="commenting-unlogin clearfix">
+                            <div class="comment-input-wr-wr">
+                                <div class="comment-input-wr">
+                                    <span class="tips">评论总要登录留个名吧</span>
+                                </div>
+                            </div>
+                            <button class="comment-login" data-type="l">登录</button>
+                        </div>
+                    </if>
+                </div>
+            </div>
+    </div>
+</div>

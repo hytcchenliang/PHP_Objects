@@ -1,0 +1,71 @@
+	<script type="text/javascript" src="__PUBLIC__/js/user-goods.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		//阅读消息并将该消息从未读消息列表中移除
+		$(".which_pro a").click(function(){
+			$(this).parents(".each_msg").remove();
+		});
+	});
+	//将消息设为已读
+	function read(msgid,goodsUrl){
+		$.post(
+	        '/tiaozaobang/Home/User/read',
+	        {msgid : msgid},
+	        function(res) {
+	            if(res=='ok'){
+		    		window.open(goodsUrl);
+		    	}
+	        }
+	    );
+	}
+	</script>
+	<ul id="middle_nav" class="clearfix">
+        <li><a href="{:U('Home/User/index')}">个人资料</a></li>
+        <li><a href="{:U('Home/User/goods')}">我发布的商品</a></li>
+        <li><a href="{:U('Home/User/favorites')}">我的收藏</a></li>
+        <li class="on"><a href="{:U('Home/User/message')}">消息中心</a></li>
+        <li><a href="{:U('Home/User/cert')}">认证信息</a></li>
+    </ul>
+    <div class="pop-tip hide">
+        <div class="pop-tip-area">
+            <p class="pop-tip-txt">修改成功</p>
+        </div>
+    </div>
+    <div id="my_messages">
+    	<h1>
+    		<eq name="all" value="0">
+	            未读消息列表
+	            <a href="{:U('Home/user/message?all=1')}">
+	                <span class="enshrine_it">全部消息</span>
+	            </a>
+            <else />
+            	全部消息列表
+	            <a href="{:U('Home/user/message?all=0')}">
+	                <span class="enshrine_it">未读消息</span>
+	            </a>
+	        </eq>
+        </h1>
+        
+	    <foreach name="my_messages" item="vo">
+	    	<eq name="all" value="0">
+	        	<div class="each_msg unread" id="message{$vo.msgid}">
+	        <else />
+	        	<div class="each_msg" id="message{$vo.msgid}">
+	        </eq>
+                <div class="ensh_tips cmd_yours">
+                	<eq name="vo.parentmsg" value="0">
+	                    <p>{$vo.sendername} 评论了您的商品</p>
+	                    <else />
+	                    <p>{$vo.sendername} 回复了您的评论</p>
+	                </eq>
+	                <p>{$vo.msgcontent}</p>
+                    <div class="which_pro">
+                        <span>商品<a href="javascript:void(0);" onclick="read({$vo.msgid}, '{:U("Home/goods/index")}?goodsid={$vo.goodsid}')">“{$vo.goodname}”</a></span>
+                    </div>
+                </div>
+                <img class="msg_ph" src="{$vo.senderimg}" alt="头像">
+                <div class="msg_border"></div>
+            </div>
+	    </foreach>
+    </div>
+</div>
